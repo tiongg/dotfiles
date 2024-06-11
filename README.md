@@ -1,5 +1,6 @@
 ## References
 https://github.com/sameemul-haque/dotfiles
+https://github.com/zDyanTB/HyprNova/tree/master
 
 ## Packages
 1. Hyprland - Tiling manager
