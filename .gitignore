@@ -1,0 +1,12 @@
+# Ignore all
+/*
+
+# Allowed files
+!.gitignore
+!README.md
+!/hypr/
+!/kitty/
+!/neofetch/
+!/wal/
+!/waybar/
+!/zsh/

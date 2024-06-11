@@ -1,0 +1,32 @@
+# -----------------------------
+# Git aliases
+# -----------------------------
+alias g="git status"
+alias gf="git fetch"
+
+# Adding and commiting
+alias ga="git add"
+alias gaa="git add ."
+alias gcm="git commit -m"
+alias gcmd="git commit -m \"$(date +%d/%m/%Y)\""
+alias gcf="git commit --fixup"
+
+# Branching
+alias gb="git branch"
+alias gco="git checkout"
+alias gcob="git checkout -b"
+alias gt="git stash"
+alias gr="git reset"
+alias grh="git reset --hard"
+
+# Rebasing
+alias grb="git rebase"
+alias grbi="git rebase -i"
+alias grbia="git rebase -i --autosquash"
+alias grbd="git rebase origin/dev"
+alias grbdia="git rebase -i --autosquash origin/dev"
+
+# Git log
+alias gl="git log --oneline --decorate --graph"
+alias glog="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --"
+alias glga="git log --graph --oneline --all --decorate"
