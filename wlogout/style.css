@@ -1,4 +1,3 @@
-/* Importing pywal colors */
 @import '../../.cache/wal/colors-waybar.css';
 
 window {
@@ -18,8 +17,9 @@ button {
     animation: gradient_f 20s ease-in infinite;
     transition: all 0.3s ease-in;
     box-shadow: 0 0 10px 2px transparent;
+    border: none;
     border-radius: 36px;
-    margin: 10px;
+    margin: 16px;
     color:  @foreground; /* text */
 }
 
