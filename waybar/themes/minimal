@@ -1,0 +1,141 @@
+{
+  "include": "~/.config/waybar/modules",
+  "layer": "top",
+  //"mode": "dock",
+  "exclusive": true,
+  "passthrough": false,
+  "position": "top",
+  "spacing": 2,
+  "fixed-center": true,
+  "ipc": true,
+  "margin-left": 4,
+  "margin-right": 4,
+  "margin-top": 0,
+  "modules-left": [
+    "clock#gar"
+  ],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "backlight#gar",
+    "network#gar",
+    "pulseaudio#gar",
+    "battery#gar",
+    "custom/power"
+  ],
+  // M O D U L E S //
+  "clock#gar": {
+    "format": "{:%a %d | %I:%M %p}",
+    "format-alt": "{:%A, %d %B, %Y (%R)}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    }
+  },
+  "hyprland/window#gar": {
+    "format": "{}",
+    "max-length": 60
+  },
+  "tray#gar": {
+    "icon-size": 15,
+    "spacing": 10
+  },
+  "pulseaudio#gar": {
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{icon} {volume}%",
+    "format-bluetooth-muted": " {icon}",
+    "format-muted": "󰸈 0%",
+    "format-icons": {
+      "headphone": "",
+      "default": [
+        "󰖀",
+        "󰕾",
+        ""
+      ]
+    },
+    "on-click": "pamixer --toggle-mute",
+    "on-click-right": "pavucontrol",
+    "tooltip": false
+  },
+  "backlight#gar": {
+    //"device": "intel_backlight",
+    "format": "{icon}",
+    "format-icons": [
+      "󰃞",
+      "󰃟",
+      "󰃠",
+    ],
+    "tooltip-format": "{percent}%"
+  },
+  "battery#gar": {
+    "interval": 60,
+    "align": 0,
+    "rotate": 0,
+    //"bat": "BAT1",
+    //"adapter": "ACAD",
+    "full-at": 100,
+    "design-capacity": false,
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-full": "{icon} Full",
+    "format-icons": {
+      "charging": [
+        "󰢜",
+        "󰂆",
+        "󰂇",
+        "󰂈",
+        "󰢝",
+        "󰂉",
+        "󰢞",
+        "󰂊",
+        "󰂋",
+        "󰂅"
+      ],
+      "default": [
+        "󰁺",
+        "󰁻",
+        "󰁼",
+        "󰁽",
+        "󰁾",
+        "󰁿",
+        "󰂀",
+        "󰂁",
+        "󰂂",
+        "󰁹"
+      ]
+    },
+    "format-time": "{H}h {M}min",
+    "tooltip": true,
+    "tooltip-format": "{timeTo} {power}w",
+  },
+  "network#gar": {
+    "format-wifi": "{icon}",
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "format-ethernet": "󰀂",
+    "format-alt": "󱛇",
+    "format-disconnected": "󰖪",
+    "tooltip-format-wifi": "{essid}  {bandwidthUpBytes}  {bandwidthDownBytes}",
+    "tooltip-format-ethernet": "{ifname}  {bandwidthUpBytes}  {bandwidthDownBytes}",
+  }
+}
