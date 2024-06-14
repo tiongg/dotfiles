@@ -29,9 +29,18 @@ tooltip {
 }
 
 /*-----module groups----*/
-.modules-right {}
-.modules-center {}
-.modules-left {}
+.modules-right {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+}
+.modules-center {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+}
+.modules-left {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+}
 
 /*-----modules indv----*/
 #workspaces button {
