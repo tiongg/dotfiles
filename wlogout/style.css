@@ -1,39 +1,39 @@
 @import '../../.cache/wal/colors-waybar.css';
 
 window {
-    font-family: Fira Code Nerd Font;
-    font-size: 16pt;
-    color:  @foreground; /* text */
-    background-image: url('../hypr/wallpaper/wallpaper-blurred.jpg');
-    background-position: center;
-    /* background-color: rgba(24, 27, 32, 0.2); */
+  font-family: Fira Code Nerd Font;
+  font-size: 16pt;
+  color:  @foreground; /* text */
+  background-image: url('../wallpaper/wallpaper-blurred.jpg');
+  background-position: center;
+  /* background-color: rgba(24, 27, 32, 0.2); */
 } 
 
 button {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 20%;
-    background-color: transparent;
-    animation: gradient_f 20s ease-in infinite;
-    transition: all 0.3s ease-in;
-    box-shadow: 0 0 10px 2px transparent;
-    border: none;
-    border-radius: 36px;
-    margin: 16px;
-    color:  @foreground; /* text */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20%;
+  background-color: transparent;
+  animation: gradient_f 20s ease-in infinite;
+  transition: all 0.3s ease-in;
+  box-shadow: 0 0 10px 2px transparent;
+  border: none;
+  border-radius: 36px;
+  margin: 16px;
+  color:  @foreground; /* text */
 }
 
 button:focus {
-    box-shadow: none;
-    background-size : 20%;
+  box-shadow: none;
+  background-size : 20%;
 }
 
 button:hover {
-    background-size: 50%;
-    box-shadow: 0 0 10px 3px rgba(0,0,0,.4);
-    background-color: @color6;
-    color: @background;
-    transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.5s ease-in;
+  background-size: 50%;
+  box-shadow: 0 0 10px 3px rgba(0,0,0,.4);
+  background-color: @color6;
+  color: @background;
+  transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.5s ease-in;
 }
 
 #shutdown {
