@@ -7,8 +7,10 @@ echo "Settings up " + $THEME + " mode..."
 wal --theme ~/.config/wal/colorschemes/$THEME/custom-$THEME.json
 
 # Updates sddm
+# Theme + Background
 SSDM_THEME="sugar-candy"
 sudo cp ~/.config/sddm/theme-$THEME.conf /usr/share/sddm/themes/$SSDM_THEME/theme.conf
+sudo cp ~/.config/wallpaper/$THEME/login.png /usr/share/sddm/themes/$SSDM_THEME/Backgrounds/1.png
 
 ## Used to have different imgs for different schemes
 # if [[ "$THEME" == "light" ]]; then
