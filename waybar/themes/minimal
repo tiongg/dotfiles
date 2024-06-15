@@ -8,9 +8,9 @@
   "spacing": 2,
   "fixed-center": true,
   "ipc": true,
-  "margin-left": 4,
-  "margin-right": 4,
-  "margin-top": 0,
+  "margin-left": 8,
+  "margin-right": 8,
+  "margin-top": 2,
   "modules-left": [
     "clock#gar"
   ],
@@ -42,10 +42,6 @@
         "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
       }
     }
-  },
-  "hyprland/window#gar": {
-    "format": "{}",
-    "max-length": 60
   },
   "tray#gar": {
     "icon-size": 15,

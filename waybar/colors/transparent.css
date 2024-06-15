@@ -5,16 +5,15 @@
   font-weight: bold;
   min-height: 0;
   font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
-  padding-top: 1px;
-  padding-bottom: 1px;
-  color: @color6;
 }
 
 window#waybar {
   background: transparent;
 }
 
-#waybar.empty, #waybar.tiled, #waybar.floating {
+#waybar.empty,
+#waybar.tiled,
+#waybar.floating {
   background-color: transparent;
 }
 
@@ -25,19 +24,21 @@ tooltip {
   border-radius: 10px;
   border-width: 1px;
   border-style: solid;
-  border-color: @color15;
+  border-color: @color7;
 }
 
 /*-----module groups----*/
-.modules-right {
+.modules-left {
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 8px;
 }
+
 .modules-center {
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 8px;
 }
-.modules-left {
+
+.modules-right {
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 8px;
 }
@@ -50,21 +51,22 @@ tooltip {
   /* Glyph is slightly to the left, so edge it back */
   padding-left: 2px;
   padding-right: 6px;
+  color: @color6;
 }
 
-#workspaces button.active {
-}
+#workspaces button.active {}
 
 #workspaces button.urgent {
   color: #11111b;
   border-radius: 10px;
 }
 
-/* This doesn't work */
 #workspaces button:hover {
-  color: @background;
+  color: @color4;
   border: none;
-  animation: none;
+  box-shadow: none;
+  text-shadow: none;
+  background: none;
   transition: none;
 }
 
@@ -117,27 +119,31 @@ tooltip {
   padding-bottom: 3px;
   padding-right: 6px;
   padding-left: 6px;
+  color: @color6;
 }
 
 #mode {
   color: #cc3436;
   font-weight: bold;
 }
-#custom-power {
-}
+
+#custom-power {}
 
 /*-----Indicators----*/
 #idle_inhibitor.activated {
   color: #2dcc36;
 }
+
 #pulseaudio.muted {
-  color: #cc3436;
+  color: #ff4f52;
 }
+
 #pulseaudio-microphone.muted {
-  color: #cc3436;
+  color: #ff4f52;
 }
+
 #temperature.critical {
-  background-color: #ff0000;
+  background-color: #ff4f52;
 }
 
 @keyframes blink {
@@ -151,7 +157,7 @@ tooltip {
   background-color: @color2;
   border-radius: 30px;
   animation: gradient_f 20s ease-in infinite;
-  transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+  transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
 }
 
 #taskbar button:hover {
@@ -159,7 +165,7 @@ tooltip {
   padding-right: 3px;
   border-radius: 15px;
   animation: gradient_f 20s ease-in infinite;
-  transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+  transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
 }
 
 #battery.critical:not(.charging) {
