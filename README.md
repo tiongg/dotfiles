@@ -16,8 +16,12 @@ https://github.com/zDyanTB/HyprNova/tree/master
 4. Yay - Package manager
 5. Hypridle - Idle manager
 6. Hyprpaper - Wallpaper manager
-
+7. SDDM - Login display manager
 
 ## Utils
 1. Hyprshot - Screenshot tool
 2. pywal - Generate colors from wallpaper
+3. sddm-sugar-dark - SDDM theme
+
+## Random notes:
+Set sddm theme here: /usr/lib/sddm/sddm.conf.d/default.conf

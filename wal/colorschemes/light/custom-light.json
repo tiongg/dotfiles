@@ -1,0 +1,27 @@
+{
+  "wallpaper": "/home/tiong/.config/wallpaper/light/login.png",
+  "alpha": "100",
+  "special": {
+    "background": "#1b222e",
+    "foreground": "#d7d4d9",
+    "cursor": "#d7d4d9"
+  },
+  "colors": {
+    "color0": "#1b222e",
+    "color1": "#247ad1",
+    "color2": "#378adb",
+    "color3": "#2584d7",
+    "color4": "#4f98df",
+    "color5": "#6b64e3",
+    "color6": "#80b0e8",
+    "color7": "#d7d4d9",
+    "color8": "#969497",
+    "color9": "#247ad1",
+    "color10": "#378adb",
+    "color11": "#2584d7",
+    "color12": "#4f98df",
+    "color13": "#6b64e3",
+    "color14": "#80b0e8",
+    "color15": "#d7d4d9"
+  }
+}
