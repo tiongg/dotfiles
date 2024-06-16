@@ -4,8 +4,8 @@ window {
   font-family: Fira Code Nerd Font;
   font-size: 16pt;
   color:  @foreground; /* text */
-  background-image: url('../wallpaper/wallpaper-blurred.jpg');
   background-position: center;
+  background-image: url('../wallpaper/wallpaper-blurred.jpg');
   /* background-color: rgba(24, 27, 32, 0.2); */
 } 
 
