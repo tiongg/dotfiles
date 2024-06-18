@@ -1,0 +1,39 @@
+configuration {
+  modes: [ combi ];
+  combi-modes: [ window, drun, run ];
+}
+
+@import "./current-theme.rasi"
+
+* {
+  shade-shadow: white / 6%;
+  shade-bg: rgba(214, 217, 213, 0.2);
+  shade-border: white / 24%;
+}
+
+window {
+  border-radius: 16px;
+  anchor: north;
+  location: north;
+  y-offset: 10%;
+  transparency: "real";
+}
+
+entry {
+  placeholder: "Search...";
+}
+
+inputbar {
+  children: ["entry"];
+}
+
+listview {
+  scrollbar: false;
+  lines: 3;
+  require-input: true;
+}
+
+element {
+  border-radius: 16px;
+  padding: 4px 16px;
+}
