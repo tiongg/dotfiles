@@ -1,8 +1,7 @@
 @define-color text @foreground;
-/* @define-color background-alt alpha(@background, 0.60); */
-@define-color background-alt rgba(80, 80, 80, 0.2);
+@define-color background-alt alpha(@color1, .4);
 @define-color selected @color6;
-@define-color hover alpha(@selected, .5);
+@define-color hover alpha(@selected, .4);
 @define-color urgent @color2;
 
 * {
@@ -11,7 +10,8 @@
   all: unset;
   font-size: 14px;
   font-family: "JetBrains Mono Nerd Font 10";
-  transition: 500ms;
+  transition: 200ms;
+
 }
 
 /* Avoid 'annoying' backgroud */
@@ -22,13 +22,12 @@
 /* CONTROL CENTER ------------------------------------------------------------------------ */
 
 .control-center {
-  background: alpha(@background, 0.75);
+  background: alpha(@background, .55);
   border-radius: 24px;
   border: 1px solid @selected;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, .6);
-  /* margin: 4px; */
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, .6);
+  margin: 18px;
   padding: 12px;
-  min-height: 100px;
 }
 
 /* Notifications  */

@@ -1,17 +1,25 @@
-/* @define-color text @foreground;
-@define-color background-alt @color1;
-@define-color selected @color3;
-@define-color hover @color5;
-@define-color urgent @color2;
+@define-color text            @foreground;
+@define-color background-alt  @color1;
+@define-color selected        @color3;
+@define-color hover           @color5;
+@define-color urgent          @color2;
 
 * {
+
+  /*background-alt:        @color1;      Buttons background */
+  /*selected:              @color2;      Button selected */
+  /*hover:                 @color5;      Hover button */
+  /*urgent:                @color6;      Urgency critical */
+  /*text-selected:         @background; */
+
   color: @text;
 
   all: unset;
   font-size: 14px;
   font-family: "JetBrains Mono Nerd Font 10";
   transition: 200ms;
-} */
+
+}
 
 .notification-row {
   outline: none;
@@ -21,7 +29,7 @@
 
 .floating-notifications.background .notification-row .notification-background {
   background: alpha(@background, .55);
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, .6);
+  box-shadow: 0 0 8px 0 rgba(0,0,0,.6);
   border: 1px solid @selected;
   border-radius: 24px;
   margin: 16px;
@@ -41,23 +49,23 @@
   margin: 14px;
 }
 
-.floating-notifications.background .notification-row .notification-background .notification>*:last-child>* {
+.floating-notifications.background .notification-row .notification-background .notification > *:last-child > * {
   min-height: 3.4em;
 }
 
-.floating-notifications.background .notification-row .notification-background .notification>*:last-child>* .notification-action {
+.floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action {
   border-radius: 8px;
   background-color: @background-alt ;
   margin: 6px;
   border: 1px solid transparent;
 }
 
-.floating-notifications.background .notification-row .notification-background .notification>*:last-child>* .notification-action:hover {
+.floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action:hover {
   background-color: @hover;
   border: 1px solid @selected;
 }
 
-.floating-notifications.background .notification-row .notification-background .notification>*:last-child>* .notification-action:active {
+.floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action:active {
   background-color: @selected;
   color: @background;
 }
