@@ -3,6 +3,7 @@
 # -----------------------------
 alias g="git status"
 alias gf="git fetch"
+alias gpl="git pull"
 
 # Adding and commiting
 alias ga="git add"
