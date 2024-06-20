@@ -28,3 +28,7 @@ Remember to symlink zsh config!!
 Set sddm theme here: /usr/lib/sddm/sddm.conf.d/default.conf
 Send notification: notify-send 'Hello world!' 'This is an example notification.' --icon=dialog-information -a telegam-desktop -t 9999999
 Start sway with css: GTK_DEBUG=interactive swaync
+
+# TODO
+Wireplumber - Get it to work
+Pipewire - Use this instead of pulseaudio
