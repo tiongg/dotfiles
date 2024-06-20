@@ -27,7 +27,7 @@
   // M O D U L E S //
   "clock#gar": {
     "format": "{:%a %d | %I:%M %p}",
-    "format-alt": "{:%A, %d %B, %Y (%R)}",
+    "format-alt": "{:%A, %d %B, %Y | %R %p}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
       "mode": "month",

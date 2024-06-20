@@ -115,10 +115,7 @@ tooltip {
 #custom-weather.showyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
-  padding-top: 3px;
-  padding-bottom: 3px;
-  padding-right: 6px;
-  padding-left: 6px;
+  padding: 4px 6px;
   color: @color6;
 }
 
@@ -215,4 +212,8 @@ tooltip {
 #backlight-slider highlight {
   min-width: 10px;
   border-radius: 5px;
+}
+
+#clock {
+  padding: 0 10px;
 }
