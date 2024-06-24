@@ -5,8 +5,8 @@ window {
   font-size: 16pt;
   color:  @foreground; /* text */
   background-position: center;
-  background-image: url('../wallpaper/wallpaper-blurred.jpg');
-  /* background-color: rgba(24, 27, 32, 0.2); */
+  /* background-image: url('../wallpaper/wallpaper-blurred.jpg'); */
+  background-color: rgba(24, 27, 32, 0.7);
 } 
 
 button {
