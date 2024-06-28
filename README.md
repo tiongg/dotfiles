@@ -1,16 +1,17 @@
 ## References
 https://github.com/sameemul-haque/dotfiles
 https://github.com/zDyanTB/HyprNova/tree/master
+https://github.com/cenunix/dotfiles-old/blob/main/dot_config/eww/fool_moon/menu/time-menu/time-menu.yuck
 
 ## Packages
 1. Hyprland - Tiling manager
 2. Waybar - Status bar
 3. Kitty - Terminal
 4. Zsh - Shell
-5. Swaylock - Lock screen
+5. Hyprlock - Lock screen
 
 ## Managers
-1. Pulseaudio - Audio manager
+1. Wireplumber/Pipewire - Audio manager
 2. Rofi - Window manager
 3. Dolphin - File manager
 4. Yay - Package manager
@@ -28,7 +29,3 @@ Remember to symlink zsh config!!
 Set sddm theme here: /usr/lib/sddm/sddm.conf.d/default.conf
 Send notification: notify-send 'Hello world!' 'This is an example notification.' --icon=dialog-information -a telegam-desktop -t 9999999
 Start sway with css: GTK_DEBUG=interactive swaync
-
-# TODO
-Wireplumber - Get it to work
-Pipewire - Use this instead of pulseaudio
