@@ -56,10 +56,7 @@ tooltip {
 
 #workspaces button.active {}
 
-#workspaces button.urgent {
-  color: #11111b;
-  border-radius: 10px;
-}
+#workspaces button.urgent {}
 
 #workspaces button:hover {
   color: @color4;

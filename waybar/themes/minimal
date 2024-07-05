@@ -1,7 +1,6 @@
 {
   "include": "~/.config/waybar/modules",
   "layer": "top",
-  //"mode": "dock",
   "exclusive": true,
   "passthrough": false,
   "position": "top",
@@ -24,7 +23,6 @@
     "battery#gar",
     "custom/power"
   ],
-  // M O D U L E S //
   "clock#gar": {
     "format": "{:%a %d | %I:%M %p}",
     "format-alt": "{:%A, %d %B, %Y | %R %p}",
@@ -65,12 +63,11 @@
     "tooltip": false
   },
   "backlight#gar": {
-    //"device": "intel_backlight",
     "format": "{icon}",
     "format-icons": [
       "󰃞",
       "󰃟",
-      "󰃠",
+      "󰃠"
     ],
     "tooltip-format": "{percent}%"
   },
@@ -78,8 +75,6 @@
     "interval": 60,
     "align": 0,
     "rotate": 0,
-    //"bat": "BAT1",
-    //"adapter": "ACAD",
     "full-at": 100,
     "design-capacity": false,
     "states": {
@@ -117,7 +112,7 @@
     },
     "format-time": "{H}h {M}min",
     "tooltip": true,
-    "tooltip-format": "{timeTo} {power}w",
+    "tooltip-format": "{timeTo} {power}w"
   },
   "network#gar": {
     "format-wifi": "{icon}",
@@ -129,9 +124,8 @@
       "󰤨"
     ],
     "format-ethernet": "󰀂",
-    "format-alt": "󱛇",
-    "format-disconnected": "󰖪",
+    "format-disconnected": "󰤭",
     "tooltip-format-wifi": "{essid}  {bandwidthUpBytes}  {bandwidthDownBytes}",
-    "tooltip-format-ethernet": "{ifname}  {bandwidthUpBytes}  {bandwidthDownBytes}",
+    "tooltip-format-ethernet": "{ifname}  {bandwidthUpBytes}  {bandwidthDownBytes}"
   }
 }
