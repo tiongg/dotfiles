@@ -1,32 +1,34 @@
-window#time-menu .time-menu{
+window#time-menu .time-menu {
   margin: 0px 8px;
   color: $foreground;
   font-size: 12px;
 
   $cellSize: 32px;
-  
+
   .calandar {
     padding: 4px;
-    background-color: transparentize($background, 0.05);
+    background-color: transparentize($background, 0.1);
     border-radius: 8px;
 
     .calandar-header {
       padding: 8px 8px 0;
     }
-    
+
     .calandar-header-label {
       font-size: 14px;
       font-weight: 900;
     }
 
-    .calandar-navigation {
-
-    }
-
     .calandar-button {
       border: 0;
+      border-radius: 4px;
       background: transparentize($background, 0.1);
       box-shadow: none;
+      color: $foreground;
+    }
+
+    .calandar-button:hover {
+      background: transparentize($color6, 0.3);
     }
 
     .calandar-day {
@@ -41,6 +43,7 @@ window#time-menu .time-menu{
 
     .today {
       background-color: transparentize($color6, 0.25);
+      border-radius: 4px;
     }
 
     .disabled {

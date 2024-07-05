@@ -23,6 +23,7 @@ function CalandarHeader(
       Widget.Box({
         className: 'calandar-navigation',
         halign: Align.END,
+        spacing: 4,
         children: [
           Widget.Button({
             className: 'calandar-button',
