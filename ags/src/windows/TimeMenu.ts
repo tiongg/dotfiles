@@ -1,5 +1,5 @@
-import Calandar from './components/Calandar';
-import PopupWindow from './components/PopupWindow';
+import Calandar from 'src/components/Calandar';
+import PopupWindow from 'src/components/PopupWindow';
 
 export default function TimeMenu() {
   return PopupWindow({
