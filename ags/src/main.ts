@@ -6,4 +6,5 @@ Utils.monitorFile(`${App.configDir}/styles`, resetCss);
 resetCss();
 
 App.config({
+  windows: [TimeMenu()],
 });

@@ -1,0 +1,50 @@
+window#time-menu .time-menu{
+  margin: 0px 8px;
+  color: $foreground;
+  font-size: 12px;
+
+  $cellSize: 32px;
+  
+  .calandar {
+    padding: 4px;
+    background-color: transparentize($background, 0.05);
+    border-radius: 8px;
+
+    .calandar-header {
+      padding: 8px 8px 0;
+    }
+    
+    .calandar-header-label {
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .calandar-navigation {
+
+    }
+
+    .calandar-button {
+      border: 0;
+      background: transparentize($background, 0.1);
+      box-shadow: none;
+    }
+
+    .calandar-day {
+      min-width: $cellSize + 2px;
+      min-height: $cellSize;
+    }
+
+    .calandar-date {
+      min-width: $cellSize + 2px;
+      min-height: $cellSize;
+    }
+
+    .today {
+      background-color: transparentize($color6, 0.25);
+    }
+
+    .disabled {
+      color: transparentize($foreground, 0.6)
+    }
+  }
+}
