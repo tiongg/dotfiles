@@ -1,0 +1,8 @@
+window#time-menu .time-menu {
+  margin: 0px 8px;
+  color: $foreground;
+  font-size: 12px;
+
+  background-color: transparentize($background, 0.1);
+  border-radius: 8px;
+}

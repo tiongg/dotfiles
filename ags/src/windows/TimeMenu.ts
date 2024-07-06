@@ -1,6 +1,9 @@
 import Calandar from 'src/components/Calandar';
 import PopupWindow from 'src/components/PopupWindow';
 
+/**
+ * Popup window with Calandar
+ */
 export default function TimeMenu() {
   return PopupWindow({
     name: 'time-menu',
