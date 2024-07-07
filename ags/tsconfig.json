@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    // "module": "ES2022",
-    "module": "CommonJS",
+    "module": "Preserve",
+    // "module": "CommonJS",
     "lib": [
-      "ES2022"
+      "ES2022",
     ],
     "allowJs": true,
     "checkJs": true,
@@ -17,5 +17,10 @@
       "./types",
     ],
     "skipLibCheck": true,
+    "paths": {
+      "@/utils/*": ["src/utils/*"],
+      "@/components/*": ["src/components/*"],
+      "@/windows/*": ["src/windows/*"],
+    }
   }
 }

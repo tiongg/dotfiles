@@ -1,6 +1,6 @@
+import cn from '@/utils/cn';
 import dayjs, { Dayjs } from 'dayjs';
 import _ from 'lodash';
-import cn from 'src/utils/cn';
 import { Align } from 'types/@girs/gtk-3.0/gtk-3.0.cjs';
 
 /**
