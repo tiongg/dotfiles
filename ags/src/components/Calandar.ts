@@ -48,7 +48,7 @@ function CalandarHeader(
 /**
  * Displays the days of the week.
  */
-function CalandarDays() {
+function CalandarDays(cellSize: number) {
   const daysOfWeek = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 
   return Widget.Box({
@@ -57,6 +57,8 @@ function CalandarDays() {
       Widget.Label({
         className: 'calandar-day',
         label: day,
+        widthRequest: cellSize + 2,
+        heightRequest: cellSize,
       })
     ),
   });
@@ -67,7 +69,7 @@ function CalandarDays() {
  * Note that the first day shown might not be
  * the first day of the month.
  */
-function CalandarDates(referenceDate: Dayjs) {
+function CalandarDates(referenceDate: Dayjs, cellSize: number) {
   const daysInMonth = referenceDate.daysInMonth();
   const firstDay = referenceDate.startOf('month');
   const lastDay = referenceDate.endOf('month');
@@ -117,6 +119,8 @@ function CalandarDates(referenceDate: Dayjs) {
               day.isSame(today, 'day') ? 'today' : ''
             ),
             label: `${day.date()}`,
+            widthRequest: cellSize + 2,
+            heightRequest: cellSize,
           })
         ),
       })
@@ -124,7 +128,7 @@ function CalandarDates(referenceDate: Dayjs) {
   });
 }
 
-export default function Calandar() {
+export default function Calandar(cellSize: number = 32) {
   const currentDate = dayjs();
   //Refence date will be 01/Month/Year
   const referenceDate = Variable(currentDate.day(1));
@@ -136,8 +140,8 @@ export default function Calandar() {
       CalandarHeader(rd, (newMonth) => {
         referenceDate.setValue(newMonth);
       }),
-      CalandarDays(),
-      CalandarDates(rd),
+      CalandarDays(cellSize),
+      CalandarDates(rd, cellSize),
     ]),
   });
 }

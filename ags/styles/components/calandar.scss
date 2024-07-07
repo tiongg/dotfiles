@@ -1,6 +1,5 @@
 .calandar {
   padding: 4px;
-  $cellSize: 32px;
 
   .calandar-header {
     padding: 8px 8px 0;
@@ -21,16 +20,6 @@
 
   .calandar-button:hover {
     background: transparentize($color6, 0.3);
-  }
-
-  .calandar-day {
-    min-width: $cellSize + 2px;
-    min-height: $cellSize;
-  }
-
-  .calandar-date {
-    min-width: $cellSize + 2px;
-    min-height: $cellSize;
   }
 
   .today {
