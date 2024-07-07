@@ -10,6 +10,11 @@ type PopupWindowProps = Omit<WindowProps, 'name'> & {
   name: string;
   layout?: keyof ReturnType<typeof Layout>;
   transition?: Transition;
+  /**
+   * Determines if the popup window should
+   * be stretched to the full size of the window
+   */
+  fullsize?: boolean;
 };
 
 export const Padding = (
@@ -45,111 +50,125 @@ const PopupRevealer = (
     })
   );
 
-const Layout = (name: string, child: Child, transition?: Transition) => ({
-  center: () =>
-    Widget.CenterBox(
-      {},
-      Padding(name),
+// Note to self: FS Padding added to nested paddings
+// MIGHT BE WRONG!!
+const Layout = (
+  name: string,
+  child: Child,
+  fullsize: boolean,
+  transition?: Transition
+) => {
+  // Fullsize aware padding
+  // Padding is only applied when the window is not fullsize
+  const FSPadding = (name: string) =>
+    Padding(name, { hexpand: !fullsize, vexpand: !fullsize });
+
+  return {
+    center: () =>
       Widget.CenterBox(
-        { vertical: true },
+        {},
         Padding(name),
-        PopupRevealer(name, child, transition),
+        Widget.CenterBox(
+          { vertical: true },
+          FSPadding(name),
+          PopupRevealer(name, child, transition),
+          FSPadding(name)
+        ),
         Padding(name)
       ),
-      Padding(name)
-    ),
-  top: () =>
-    Widget.CenterBox(
-      {},
-      Padding(name),
-      Widget.Box(
-        { vertical: true },
-        PopupRevealer(name, child, transition),
-        Padding(name)
-      ),
-      Padding(name)
-    ),
-  'top-right': () =>
-    Widget.Box(
-      {},
-      Padding(name),
-      Widget.Box(
-        {
-          hexpand: false,
-          vertical: true,
-        },
-        PopupRevealer(name, child, transition),
-        Padding(name)
-      )
-    ),
-  'top-center': () =>
-    Widget.Box(
-      {},
-      Padding(name),
-      Widget.Box(
-        {
-          hexpand: false,
-          vertical: true,
-        },
-        PopupRevealer(name, child, transition),
-        Padding(name)
-      ),
-      Padding(name)
-    ),
-  'top-left': () =>
-    Widget.Box(
-      {},
-      Widget.Box(
-        {
-          hexpand: false,
-          vertical: true,
-        },
-        PopupRevealer(name, child, transition),
-        Padding(name)
-      ),
-      Padding(name)
-    ),
-  'bottom-left': () =>
-    Widget.Box(
-      {},
-      Widget.Box(
-        {
-          hexpand: false,
-          vertical: true,
-        },
+    top: () =>
+      Widget.CenterBox(
+        {},
         Padding(name),
-        PopupRevealer(name, child, transition)
+        Widget.Box(
+          { vertical: true },
+          PopupRevealer(name, child, transition),
+          FSPadding(name)
+        ),
+        Padding(name)
       ),
-      Padding(name)
-    ),
-  'bottom-center': () =>
-    Widget.Box(
-      {},
-      Padding(name),
+    'top-right': () =>
       Widget.Box(
-        {
-          hexpand: false,
-          vertical: true,
-        },
+        {},
         Padding(name),
-        PopupRevealer(name, child, transition)
+        Widget.Box(
+          {
+            hexpand: false,
+            vertical: true,
+          },
+          PopupRevealer(name, child, transition),
+          FSPadding(name)
+        )
       ),
-      Padding(name)
-    ),
-  'bottom-right': () =>
-    Widget.Box(
-      {},
-      Padding(name),
+    'top-center': () =>
       Widget.Box(
-        {
-          hexpand: false,
-          vertical: true,
-        },
+        {},
         Padding(name),
-        PopupRevealer(name, child, transition)
-      )
-    ),
-});
+        Widget.Box(
+          {
+            hexpand: false,
+            vertical: true,
+          },
+          PopupRevealer(name, child, transition),
+          FSPadding(name)
+        ),
+        Padding(name)
+      ),
+    'top-left': () =>
+      Widget.Box(
+        {},
+        Widget.Box(
+          {
+            hexpand: false,
+            vertical: true,
+          },
+          PopupRevealer(name, child, transition),
+          FSPadding(name)
+        ),
+        Padding(name)
+      ),
+    'bottom-left': () =>
+      Widget.Box(
+        {},
+        Widget.Box(
+          {
+            hexpand: false,
+            vertical: true,
+          },
+          FSPadding(name),
+          PopupRevealer(name, child, transition)
+        ),
+        Padding(name)
+      ),
+    'bottom-center': () =>
+      Widget.Box(
+        {},
+        Padding(name),
+        Widget.Box(
+          {
+            hexpand: false,
+            vertical: true,
+          },
+          FSPadding(name),
+          PopupRevealer(name, child, transition)
+        ),
+        Padding(name)
+      ),
+    'bottom-right': () =>
+      Widget.Box(
+        {},
+        Padding(name),
+        Widget.Box(
+          {
+            hexpand: false,
+            vertical: true,
+          },
+          FSPadding(name),
+          PopupRevealer(name, child, transition)
+        )
+      ),
+  };
+};
 
 export default ({
   name,
@@ -157,6 +176,7 @@ export default ({
   layout = 'center',
   transition,
   exclusivity = 'ignore',
+  fullsize = false,
   ...props
 }: PopupWindowProps) =>
   Widget.Window<Gtk.Widget>({
@@ -168,6 +188,6 @@ export default ({
     exclusivity,
     layer: 'top',
     anchor: ['top', 'bottom', 'right', 'left'],
-    child: Layout(name, child, transition)[layout](),
+    child: Layout(name, child, fullsize, transition)[layout](),
     ...props,
   });
