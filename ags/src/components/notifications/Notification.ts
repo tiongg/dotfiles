@@ -1,4 +1,3 @@
-import iconPath from '@/utils/icon-path';
 import dayjs from 'dayjs';
 import { Align } from 'types/@girs/gtk-3.0/gtk-3.0.cjs';
 import { type Notification as NotificationType } from 'types/service/notifications';
@@ -23,7 +22,7 @@ function NotificationIcon({ app_entry, app_icon, image }: NotificationType) {
     });
   }
 
-  let icon = iconPath('info-filled');
+  let icon = 'info-filled';
   if (Utils.lookUpIcon(app_icon)) icon = app_icon;
 
   if (Utils.lookUpIcon(app_entry)) icon = app_entry;

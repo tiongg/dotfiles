@@ -5,6 +5,7 @@ import { resetCss } from 'styles/style-helper';
 // Config
 import './config/dayjs';
 
+App.addIcons(`${App.configDir}/src/icons`);
 Utils.monitorFile(`${App.configDir}/styles`, resetCss);
 await resetCss();
 

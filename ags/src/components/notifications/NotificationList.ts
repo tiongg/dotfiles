@@ -1,4 +1,3 @@
-import iconPath from '@/utils/icon-path';
 import { Align } from 'types/@girs/gtk-3.0/gtk-3.0.cjs';
 import { type Notification as NotificationType } from 'types/service/notifications';
 import IconButton from '../IconButton';
@@ -57,7 +56,7 @@ function EmptyNotificationsList() {
     spacing: 8,
     children: [
       Widget.Icon({
-        icon: iconPath('tick-filled'),
+        icon: 'tick-filled',
       }),
       Widget.Label('All caught up!'),
     ],

@@ -1,4 +1,3 @@
-import iconPath from '@/utils/icon-path';
 import { ButtonProps } from 'types/widgets/button';
 
 export type IconButtonProps = Omit<ButtonProps, 'child'> & {
@@ -23,7 +22,7 @@ export default function IconButton({
 }: IconButtonProps) {
   return Widget.Button({
     child: Widget.Icon({
-      icon: resolveToDirectory ? iconPath(icon) : icon,
+      icon,
     }),
     ...buttonProps,
   });
