@@ -2,7 +2,6 @@ import dayjs from 'dayjs';
 import { Align } from 'types/@girs/gtk-3.0/gtk-3.0.cjs';
 import { type Notification as NotificationType } from 'types/service/notifications';
 import { type Variable as VariableType } from 'types/variable';
-import IconButton from '../IconButton';
 
 function NotificationIcon({ app_entry, app_icon, image }: NotificationType) {
   app_entry ??= '';
@@ -39,14 +38,16 @@ function NotificationIcon({ app_entry, app_icon, image }: NotificationType) {
 }
 
 function NotificationHeader(
-  { summary, time: timeRaw }: NotificationType,
-  isHoveredVar: VariableType<boolean>
+  { summary, time: timeRaw, close }: NotificationType,
+  isHovered: VariableType<boolean>
 ) {
   const time = Variable('', {
     poll: [1000, () => dayjs(timeRaw * 1000).fromNow()],
   });
-  const isHovered = isHoveredVar.bind();
-  const isNotHovered = isHoveredVar.bind().as((isHovered) => !isHovered);
+  // Shows time, or dismiss button if hovered
+  const label = Utils.derive([isHovered, time], (hovered, time) =>
+    hovered ? 'Dismiss' : time
+  );
 
   const Title = Widget.Label({
     className: 'notification-title',
@@ -57,24 +58,25 @@ function NotificationHeader(
     useMarkup: true,
     halign: Align.START,
   });
-  const Time = Widget.Label({
-    className: 'notification-time',
-    label: time.bind(),
-    hexpand: isNotHovered,
-    visible: isNotHovered,
+  const TimeOrDismiss = Widget.Button({
+    className: isHovered
+      .bind()
+      .as(
+        (isHovered) =>
+          `notification-time ${isHovered ? 'dismiss-mode' : 'time-mode'}`
+      ),
+    onClicked: () => {
+      close();
+    },
+    label: label.bind(),
     halign: Align.END,
-  });
-  const Dismiss = IconButton({
-    icon: 'cross',
-    hexpand: isHovered,
-    visible: isHovered,
-    halign: Align.END,
+    hexpand: true,
   });
 
   return Widget.Box({
     className: 'notification-header',
     homogeneous: true,
-    children: [Title, Time, Dismiss],
+    children: [Title, TimeOrDismiss],
   });
 }
 
@@ -122,10 +124,10 @@ export default function Notification(notif: NotificationType) {
 
   return Widget.EventBox({
     child: NotificationBox(notif, isHovered),
-    onHover: (self, hovered) => {
+    onHover: () => {
       isHovered.setValue(true);
     },
-    onHoverLost: (self) => {
+    onHoverLost: () => {
       isHovered.setValue(false);
     },
   });

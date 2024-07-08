@@ -21,7 +21,7 @@ function NotificationsMenuCalandar() {
 function NotificationsMenuControls() {
   return Widget.Box({
     className: 'notifications-menu-controls',
-    vertical: false,
+    vertical: true,
     children: [DoNotDisturb()],
   });
 }
