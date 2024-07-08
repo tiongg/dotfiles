@@ -22,9 +22,11 @@ export async function resetCss() {
     await Utils.writeFile(variables.join('\n'), variablesPath);
     await Utils.writeFile(imports.join('\n'), scssPath);
     await bash(`sass ${scssPath} ${finalCssPath}`);
-
-    App.applyCss(finalCssPath, true);
   } catch (e) {
     console.error(e);
   }
+
+  // Apply old compiled css if it failed
+  // This happens during auto start
+  App.applyCss(finalCssPath, true);
 }

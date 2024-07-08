@@ -31,6 +31,7 @@ Send notification: notify-send 'Ryan Katto' 'Eh prod die' -i telegram -a org.tel
 
 Ags: ags -b hypr
 Open menu: ags -b hypr -r "App.toggleWindow('time-menu');" 
+Currently symlinking esbuild to /usr/bin in order for auto start to work
 
 ## TODO:
 BTOP

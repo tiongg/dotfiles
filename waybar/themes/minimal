@@ -26,7 +26,7 @@
   "clock#gar": {
     "format": "{:%a %d | %I:%M %p}",
     // "format-alt": "{:%A, %d %B, %Y | %R %p}",
-    "on-click": "ags -b hypr -r \"App.toggleWindow('time-menu')\""
+    "on-click": "ags -b hypr --toggle-window time-menu"
   },
   "tray#gar": {
     "icon-size": 15,
