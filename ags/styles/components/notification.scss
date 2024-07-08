@@ -1,0 +1,27 @@
+.notification {
+  // Application icon
+  .notification-icon {
+    font-size: 48px;
+  }
+
+  // Custom image
+  // i.e telegram send pfp instead
+  .notification-img {
+    min-width: 48px;
+    min-height: 48px;
+  }
+
+  .notification-title {
+    font-weight: 700;
+    color: $white;
+  }
+
+  .notification-time {
+    color: darken($white, 40%);
+    font-size: 12px;
+  }
+
+  .notification-body {
+    color: $foreground
+  }
+}

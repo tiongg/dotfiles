@@ -27,12 +27,10 @@ https://github.com/cenunix/dotfiles-old/blob/main/dot_config/eww/fool_moon/menu/
 ## Random notes:
 Remember to symlink zsh config!!
 Set sddm theme here: /usr/lib/sddm/sddm.conf.d/default.conf
-Send notification: notify-send 'Hello world!' 'This is an example notification.' --icon=dialog-information -a telegam-desktop -t 9999999
-Start sway with css: GTK_DEBUG=interactive swaync
+Send notification: notify-send 'Ryan Katto' 'Eh prod die' -i telegram -a org.telegram.desktop -t 9999999 -u normal -c im.received
 
 Ags: ags -b hypr
 Open menu: ags -b hypr -r "App.toggleWindow('time-menu');" 
 
 ## TODO:
-AGS: https://aylur.github.io/ags-docs/
 BTOP

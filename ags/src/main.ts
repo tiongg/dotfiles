@@ -1,9 +1,18 @@
+import NotificationsMenu from '@/windows/NotificationsMenu';
+import TimeMenu from '@/windows/TimeMenu';
 import { resetCss } from 'styles/style-helper';
-import TimeMenu from './windows/TimeMenu';
+
+// Config
+import './config/dayjs';
 
 Utils.monitorFile(`${App.configDir}/styles`, resetCss);
-resetCss();
+await resetCss();
 
 App.config({
-  windows: [TimeMenu()],
+  windows: [
+    // Calandar popup
+    TimeMenu(),
+    // Notifications
+    NotificationsMenu(),
+  ],
 });
