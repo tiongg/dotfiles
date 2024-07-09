@@ -3,6 +3,8 @@ import PopupWindow from '@/components/PopupWindow';
 import NotificationList from '@/components/notifications/NotificationList';
 import { Align } from 'types/@girs/gtk-3.0/gtk-3.0.cjs';
 
+const notifications = await Service.import('notifications');
+
 /**
  * Calandar in notification menu
  */
@@ -31,6 +33,7 @@ function NotificationsMenuControls() {
  */
 function DoNotDisturb() {
   return Widget.Box({
+    className: 'do-not-disturb',
     hexpand: true,
     homogeneous: true,
     children: [
@@ -40,7 +43,10 @@ function DoNotDisturb() {
       }),
       Widget.Switch({
         halign: Align.END,
-        active: false,
+        active: notifications.bind('dnd'),
+        onActivate: ({ active }) => {
+          notifications.dnd = active;
+        },
       }),
     ],
   });
