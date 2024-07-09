@@ -1,3 +1,4 @@
+import cn from '@/utils/cn';
 import dayjs from 'dayjs';
 import { Align } from 'types/@girs/gtk-3.0/gtk-3.0.cjs';
 import { type Notification as NotificationType } from 'types/service/notifications';
@@ -61,9 +62,8 @@ function NotificationHeader(
   const TimeOrDismiss = Widget.Button({
     className: isHovered
       .bind()
-      .as(
-        (isHovered) =>
-          `notification-time ${isHovered ? 'dismiss-mode' : 'time-mode'}`
+      .as((isHovered) =>
+        cn('notification-time', `${isHovered ? 'dismiss-mode' : 'time-mode'}`)
       ),
     onClicked: () => {
       close();

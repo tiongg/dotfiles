@@ -89,10 +89,13 @@ function NotificationsList() {
     vexpand: hasNotifs,
     visible: hasNotifs,
     spacing: 8,
-    children: notifications.notifications.map((notif) => {
-      notifMap.set(notif.id, Animated(notif));
-      return notifMap.get(notif.id)!;
-    }),
+    children: notifications.notifications
+      .sort((a, b) => (a.time < b.time ? 1 : -1))
+      .map((notif) => {
+        const newNotif = Animated(notif);
+        notifMap.set(notif.id, newNotif);
+        return newNotif;
+      }),
   });
 
   return list.hook(notifications, remove, 'closed').hook(
