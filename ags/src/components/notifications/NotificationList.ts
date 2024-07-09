@@ -64,7 +64,7 @@ function EmptyNotificationsList() {
 }
 
 /**
- * List of all notifications
+ * List of all notifications. No empty state
  */
 function NotificationsList() {
   const notifMap = new Map<number, ReturnType<typeof Animated>>();
@@ -84,9 +84,9 @@ function NotificationsList() {
   };
 
   const list = Widget.Box({
+    className: 'notifications-list',
     vertical: true,
     vexpand: hasNotifs,
-    className: 'notifications-list',
     visible: hasNotifs,
     spacing: 8,
     children: notifications.notifications.map((notif) => {
@@ -121,9 +121,9 @@ export default function NotificationList() {
   });
 
   return Widget.Box({
+    className: 'notifications-list',
     vertical: true,
     vexpand: true,
-    className: 'notifications-list',
     spacing: 8,
     children: [
       NotificationsHeader(),

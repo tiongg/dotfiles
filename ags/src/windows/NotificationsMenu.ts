@@ -40,6 +40,7 @@ function DoNotDisturb() {
       }),
       Widget.Switch({
         halign: Align.END,
+        active: false,
       }),
     ],
   });
@@ -66,12 +67,6 @@ function NotificationsMenuContent() {
  * Notifications control center
  */
 export default function NotificationsMenu() {
-  // return Widget.Window({
-  //   name: 'notifications-menu',
-  //   exclusivity: 'exclusive',
-  //   anchor: ['top', 'right', 'bottom'],
-  //   child: NotificationsMenuContent(),
-  // });
   return PopupWindow({
     name: 'notifications-menu',
     exclusivity: 'exclusive',

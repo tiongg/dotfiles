@@ -1,4 +1,6 @@
 .notification {
+  background: transparentize($background, 0.05);
+  
   // Application icon
   .notification-icon {
     font-size: 48px;
@@ -37,7 +39,8 @@
 
   // Hovering over the 'Dismiss' button
   .notification-time.dismiss-mode:hover {
-    color:$white;
+    color: $white;
+    background: transparentize(darken($white, 40%), 0.7);
   }
 
   .notification-body {
