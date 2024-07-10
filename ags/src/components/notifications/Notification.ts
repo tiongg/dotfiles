@@ -45,9 +45,9 @@ function NotificationHeader(
   const time = Variable('', {
     poll: [1000, () => dayjs(timeRaw * 1000).fromNow()],
   });
-  // Shows time, or dismiss button if hovered
+  // Shows time, or close button if hovered
   const label = Utils.derive([isHovered, time], (hovered, time) =>
-    hovered ? 'Dismiss' : time
+    hovered ? 'Close' : time
   );
 
   const Title = Widget.Label({
@@ -59,11 +59,11 @@ function NotificationHeader(
     useMarkup: true,
     halign: Align.START,
   });
-  const TimeOrDismiss = Widget.Button({
+  const TimeOrClose = Widget.Button({
     className: isHovered
       .bind()
       .as((isHovered) =>
-        cn('notification-time', `${isHovered ? 'dismiss-mode' : 'time-mode'}`)
+        cn('notification-time', `${isHovered ? 'close-mode' : 'time-mode'}`)
       ),
     onClicked: () => {
       close();
@@ -76,7 +76,7 @@ function NotificationHeader(
   return Widget.Box({
     className: 'notification-header',
     homogeneous: true,
-    children: [Title, TimeOrDismiss],
+    children: [Title, TimeOrClose],
   });
 }
 
