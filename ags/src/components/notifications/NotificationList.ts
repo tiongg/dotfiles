@@ -93,6 +93,7 @@ function NotificationsList() {
       .sort((a, b) => (a.time < b.time ? 1 : -1))
       .map((notif) => {
         const newNotif = Animated(notif);
+        if (notifMap.has(notif.id)) remove(null, notif.id);
         notifMap.set(notif.id, newNotif);
         return newNotif;
       }),

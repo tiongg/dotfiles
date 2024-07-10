@@ -3,7 +3,6 @@ import { Align } from 'types/@girs/gtk-3.0/gtk-3.0.cjs';
 import { type Notification as NotificationType } from 'types/service/notifications';
 
 const notifications = await Service.import('notifications');
-const notifs = notifications.bind('notifications');
 
 function Animated(notif: NotificationType) {
   return Widget.Revealer({
@@ -24,16 +23,24 @@ function Animated(notif: NotificationType) {
  * Slightly different from the control center version
  */
 function NotificationsList() {
-  const notifMap = new Map<number, ReturnType<typeof Animated>>();
+  const notifs = notifications.popups
+    .filter((notif) => notif.id !== undefined)
+    .map((notif) => ({
+      id: notif.id,
+      widget: Animated(notif),
+    }));
+
   const remove = (_: unknown, id?: number) => {
     if (id === undefined) return;
-    const notif = notifMap.get(id);
+    const widgetInfo = notifs.find((notif) => notif.id === id);
     // Closed or dismissed already
-    if (!notif) return;
-    notif.reveal_child = false;
+    if (!widgetInfo) return;
+    const { widget } = widgetInfo;
+
+    widget.reveal_child = false;
     Utils.timeout(10, () => {
-      notif.destroy();
-      notifMap.delete(id);
+      widget.destroy();
+      notifs.splice(notifs.indexOf(widgetInfo), 1);
     });
   };
 
@@ -43,11 +50,9 @@ function NotificationsList() {
     widthRequest: 300,
     className: 'notifications-list',
     spacing: 8,
-    valign: Align.START,
-    children: notifications.popups.map((notif) => {
-      notifMap.set(notif.id, Animated(notif));
-      return notifMap.get(notif.id)!;
-    }),
+    valign: Align.CENTER,
+    vpack: 'start',
+    children: notifs.map(({ widget }) => widget),
   });
 
   return list
@@ -57,12 +62,18 @@ function NotificationsList() {
       notifications,
       (_, id) => {
         if (id === undefined) return;
-        if (notifMap.has(id)) remove(null, id);
         const notif = notifications.getPopup(id);
         if (!notif) return;
         const newNotif = Animated(notif);
-        notifMap.set(id, newNotif);
-        list.children = [newNotif, ...list.children].slice(0, 4);
+        notifs.unshift({
+          id: notif.id,
+          widget: newNotif,
+        });
+        if (notifs.length > 3) {
+          const { id } = notifs.pop()!;
+          remove(null, id);
+        }
+        list.children = notifs.map(({ widget }) => widget);
       },
       'notified'
     );
