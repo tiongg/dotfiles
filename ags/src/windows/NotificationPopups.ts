@@ -1,4 +1,5 @@
 import Notification from '@/components/notifications/Notification';
+import { Windows } from '@/constants/windows.type';
 import { Align } from 'types/@girs/gtk-3.0/gtk-3.0.cjs';
 import { type Notification as NotificationType } from 'types/service/notifications';
 
@@ -84,7 +85,7 @@ function NotificationsList() {
  */
 export default function NotificationPopups() {
   return Widget.Window({
-    name: 'notification-popups',
+    name: Windows.NOTIFICATIONS_POPUP,
     anchor: ['top', 'right'],
     vexpand: true,
     vexpandSet: true,

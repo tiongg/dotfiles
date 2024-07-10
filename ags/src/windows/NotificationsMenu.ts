@@ -1,6 +1,7 @@
 import Calandar from '@/components/Calandar';
 import PopupWindow from '@/components/PopupWindow';
 import NotificationList from '@/components/notifications/NotificationList';
+import { Windows } from '@/constants/windows.type';
 import { Align } from 'types/@girs/gtk-3.0/gtk-3.0.cjs';
 
 const notifications = await Service.import('notifications');
@@ -74,7 +75,7 @@ function NotificationsMenuContent() {
  */
 export default function NotificationsMenu() {
   return PopupWindow({
-    name: 'notifications-menu',
+    name: Windows.CONTROL_CENTER,
     exclusivity: 'exclusive',
     layout: 'top-right',
     transition: 'crossfade',
