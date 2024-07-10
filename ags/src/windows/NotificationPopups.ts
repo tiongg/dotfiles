@@ -5,6 +5,17 @@ import { type Notification as NotificationType } from 'types/service/notificatio
 
 const notifications = await Service.import('notifications');
 
+// Dismiss all notifs when control center opens
+App.connect('window-toggled', (_app, windowName: string, visible: boolean) => {
+  if (windowName !== Windows.CONTROL_CENTER || !visible) {
+    return;
+  }
+
+  for (const notification of notifications.notifications) {
+    notification.dismiss();
+  }
+});
+
 function Animated(notif: NotificationType) {
   return Widget.Revealer({
     transitionDuration: 200,
@@ -62,6 +73,10 @@ function NotificationsList() {
     .hook(
       notifications,
       (_, id) => {
+        // Hide popups when control center is showing
+        if (App.getWindow(Windows.CONTROL_CENTER)?.visible) {
+          return;
+        }
         if (id === undefined) return;
         const notif = notifications.getPopup(id);
         if (!notif) return;

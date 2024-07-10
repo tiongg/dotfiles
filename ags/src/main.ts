@@ -1,6 +1,8 @@
+import { resetCss } from 'styles/style-helper';
+
+// Menus
 import NotificationsMenu from '@/windows/NotificationsMenu';
 import TimeMenu from '@/windows/TimeMenu';
-import { resetCss } from 'styles/style-helper';
 import NotificationPopups from './windows/NotificationPopups';
 
 // Config
