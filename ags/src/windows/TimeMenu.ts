@@ -12,7 +12,12 @@ export default function TimeMenu() {
     layout: 'top-left',
     child: Widget.Box({
       className: 'time-menu',
-      children: [Calandar()],
+      children: [
+        Calandar({
+          cellSize: 30,
+          keepConsisent: false,
+        }),
+      ],
     }),
   });
 }

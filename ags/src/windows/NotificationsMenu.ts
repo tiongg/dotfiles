@@ -12,7 +12,11 @@ const notifications = await Service.import('notifications');
 function NotificationsMenuCalandar() {
   return Widget.Box({
     halign: Align.CENTER,
-    children: [Calandar(36)],
+    children: [
+      Calandar({
+        cellSize: 36,
+      }),
+    ],
   });
 }
 

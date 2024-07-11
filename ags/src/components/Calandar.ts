@@ -9,21 +9,31 @@ import { Align } from 'types/@girs/gtk-3.0/gtk-3.0.cjs';
  */
 function CalandarHeader(
   referenceDate: Dayjs,
-  onMonthChange: (newMonth: Dayjs) => void
+  onMonthChange: (newMonth: Dayjs) => void,
+  cellSize: number
 ) {
+  // Want to be aligned with the day headers
+  // So we subtract the spacing
+  const spacing = 4;
+  cellSize -= spacing;
+
   return Widget.Box({
     className: 'calandar-header',
-    homogeneous: true,
+    // homogeneous: true,
     children: [
       Widget.Label({
         className: 'calandar-header-label',
-        label: referenceDate.format('MMM YYYY'),
+        label: referenceDate.format('MMMM YYYY'),
         halign: Align.START,
+      }),
+      // Padding
+      Widget.Box({
+        hexpand: true,
       }),
       Widget.Box({
         className: 'calandar-navigation',
         halign: Align.END,
-        spacing: 4,
+        spacing,
         children: [
           Widget.Button({
             className: 'calandar-button',
@@ -31,6 +41,8 @@ function CalandarHeader(
               onMonthChange(referenceDate.subtract(1, 'month'));
             },
             label: '<',
+            widthRequest: cellSize,
+            heightRequest: cellSize,
           }),
           Widget.Button({
             className: 'calandar-button',
@@ -38,6 +50,8 @@ function CalandarHeader(
               onMonthChange(referenceDate.add(1, 'month'));
             },
             label: '>',
+            widthRequest: cellSize,
+            heightRequest: cellSize,
           }),
         ],
       }),
@@ -68,8 +82,15 @@ function CalandarDays(cellSize: number) {
  * Displays dates in the given month.
  * Note that the first day shown might not be
  * the first day of the month.
+ * @param referenceDate - Reference date
+ * @param cellSize - Size of each cell
+ * @param keepConsisent - If true, the calandar will always have 6 rows
  */
-function CalandarDates(referenceDate: Dayjs, cellSize: number) {
+function CalandarDates(
+  referenceDate: Dayjs,
+  cellSize: number,
+  keepConsisent: boolean
+) {
   const daysInMonth = referenceDate.daysInMonth();
   const firstDay = referenceDate.startOf('month');
   const lastDay = referenceDate.endOf('month');
@@ -94,6 +115,18 @@ function CalandarDates(referenceDate: Dayjs, cellSize: number) {
   if (lastDay.day() !== 6) {
     //Can assume that next month has >7 days
     const fillAmount = 6 - lastDay.day();
+    const fillDates = _.range(1, fillAmount + 1).map((offset) => ({
+      day: lastDay.add(offset, 'days'),
+      isInMonth: false,
+    }));
+
+    dates.push(...fillDates);
+  }
+
+  // If we have less than 6 rows, fill with next month
+  // This is to account for months that have 5 weeks (i.e Jun 2024)
+  if (dates.length / 7 < 6 && keepConsisent) {
+    const fillAmount = 7 * 6 - dates.length;
     const fillDates = _.range(1, fillAmount + 1).map((offset) => ({
       day: lastDay.add(offset, 'days'),
       isInMonth: false,
@@ -128,7 +161,27 @@ function CalandarDates(referenceDate: Dayjs, cellSize: number) {
   });
 }
 
-export default function Calandar(cellSize: number = 32) {
+export type CalandarProps = {
+  /**
+   * Size of each cell (Header & date)
+   * @default 32
+   */
+  cellSize?: number;
+
+  /**
+   * If true, the calandar will always have 6 rows
+   * @default true
+   */
+  keepConsisent?: boolean;
+};
+
+/**
+ * Calandar widget
+ */
+export default function Calandar({
+  cellSize = 32,
+  keepConsisent = true,
+}: CalandarProps = {}) {
   const currentDate = dayjs();
   //Refence date will be 01/Month/Year
   const referenceDate = Variable(currentDate.day(1));
@@ -137,11 +190,15 @@ export default function Calandar(cellSize: number = 32) {
     className: 'calandar',
     vertical: true,
     children: referenceDate.bind().as((rd) => [
-      CalandarHeader(rd, (newMonth) => {
-        referenceDate.setValue(newMonth);
-      }),
+      CalandarHeader(
+        rd,
+        (newMonth) => {
+          referenceDate.setValue(newMonth);
+        },
+        cellSize
+      ),
       CalandarDays(cellSize),
-      CalandarDates(rd, cellSize),
+      CalandarDates(rd, cellSize, keepConsisent),
     ]),
   });
 }

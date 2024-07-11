@@ -11,6 +11,6 @@ window#notification-popups  {
   .notification {
     border-radius: 8px;
     padding: 4px 8px;
-    background: transparentize($background, 0.05);
+    background: $bg;
   }
 }

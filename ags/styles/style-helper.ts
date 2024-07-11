@@ -8,14 +8,18 @@ const scssPath = `${cwd}/dist/main.scss`;
 const finalCssPath = `${cwd}/dist/main.css`;
 
 const $ = (name: string, value: string) => `$${name}: ${value};`;
-const variables = [$('white', '#fff'), $('black', '#000')];
+const variables = [
+  $('white', '#fff'),
+  $('black', '#000'),
+  $('bg', 'transparentize($background, 0.05)'),
+];
 
 export async function resetCss() {
   try {
     const fd = await bash(`fd ".scss" ${App.configDir}/styles`);
     const walPath = await bash('echo $HOME/.cache/wal/colors.scss');
     const files = fd.split(/\s+/);
-    const imports = [variablesPath, walPath, ...files].map(
+    const imports = [walPath, variablesPath, ...files].map(
       (f) => `@import "${f}";`
     );
 

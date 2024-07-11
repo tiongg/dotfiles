@@ -1,9 +1,9 @@
 window#notifications-menu .notifications-menu {
   margin: 8px;
   padding: 16px;
-  color: $foreground;
-  background: transparentize($background, 0.05);
   font-size: 14px;
+  color: $foreground;
+  background: $bg;
 
   border: 1px solid;
   border-radius: 8px;
