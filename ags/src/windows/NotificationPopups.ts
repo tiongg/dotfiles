@@ -100,6 +100,7 @@ function NotificationsList() {
  */
 export default function NotificationPopups() {
   return Widget.Window({
+    monitor: 0,
     name: Windows.NOTIFICATIONS_POPUP,
     anchor: ['top', 'right'],
     vexpand: true,

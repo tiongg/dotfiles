@@ -1,3 +1,7 @@
+import Gdk from 'gi://Gdk';
+import Gtk from 'gi://Gtk?version=3.0';
+import _ from 'lodash';
+
 /**
  * Execute Bash command(s)
  * @param commands - Command(s) to execute
@@ -20,4 +24,9 @@ export async function bash(commands: string | string[], ...args: unknown[]) {
  */
 export async function sh(cmd: string | string[]) {
   return Utils.execAsync(cmd);
+}
+
+export function forMonitors(widget: (monitor: number) => Gtk.Window) {
+  const monitors = Gdk.Display.get_default()?.get_n_monitors() || 1;
+  return _.range(monitors).flatMap(widget);
 }

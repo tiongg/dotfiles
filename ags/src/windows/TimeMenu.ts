@@ -7,6 +7,7 @@ import { Windows } from '@/constants/windows.type';
  */
 export default function TimeMenu() {
   return PopupWindow({
+    monitor: 0,
     name: Windows.CALANDAR,
     exclusivity: 'exclusive',
     layout: 'top-left',

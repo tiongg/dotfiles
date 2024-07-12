@@ -1,4 +1,5 @@
 import { resetCss } from 'styles/style-helper';
+import { forMonitors } from './utils/utils';
 
 // Menus
 import NotificationsMenu from '@/windows/NotificationsMenu';
@@ -16,11 +17,12 @@ await resetCss();
 App.config({
   windows: [
     // Calandar popup
+    // TODO: This always pops up on the first monitor
     TimeMenu(),
     // Notifications
     NotificationsMenu(),
     NotificationPopups(),
     // Bar
-    Bar(),
+    ...forMonitors(Bar),
   ],
 });
