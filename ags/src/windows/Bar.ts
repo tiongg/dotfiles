@@ -1,12 +1,14 @@
+import BatteryDisplay from '@/components/bar/BatteryDisplay';
+import NetworkDisplay from '@/components/bar/NetworkDisplay';
 import SmallClock from '@/components/bar/SmallClock';
+import VolumeDisplay from '@/components/bar/VolumeDisplay';
 import Workspaces from '@/components/bar/Workspaces';
 import Gtk from 'gi://Gtk?version=3.0';
 
 const layout = {
   left: [SmallClock()],
   center: [Workspaces()],
-  // brightness, wifi, volume, battery, power
-  right: [Widget.Label('right')],
+  right: [NetworkDisplay(), VolumeDisplay(), BatteryDisplay()],
 };
 
 function BarContent() {
@@ -26,6 +28,7 @@ function BarContent() {
     endWidget: Widget.Box({
       className: 'island right',
       hexpand: true,
+      spacing: 12,
       halign: Gtk.Align.END,
       children: layout.right,
     }),

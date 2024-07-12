@@ -98,7 +98,7 @@ function NotificationBox(
 ) {
   return Widget.Box({
     className: 'notification',
-    spacing: 4,
+    spacing: 8,
     children: [
       NotificationIcon(notif),
       Widget.Box({
