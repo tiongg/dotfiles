@@ -1,3 +1,4 @@
+import { clock } from '@/constants/variables';
 import cn from '@/utils/cn';
 import dayjs from 'dayjs';
 import Gtk from 'gi://Gtk?version=3.0';
@@ -42,12 +43,9 @@ function NotificationHeader(
   { summary, time: timeRaw, close }: NotificationType,
   isHovered: VariableType<boolean>
 ) {
-  const time = Variable('', {
-    poll: [1000, () => dayjs(timeRaw * 1000).fromNow()],
-  });
   // Shows time, or close button if hovered
-  const label = Utils.derive([isHovered, time], (hovered, time) =>
-    hovered ? 'Close' : time
+  const label = Utils.derive([isHovered, clock], (hovered, _now) =>
+    hovered ? 'Close' : dayjs(timeRaw * 1000).fromNow()
   );
 
   const Title = Widget.Label({
