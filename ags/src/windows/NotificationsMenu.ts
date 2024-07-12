@@ -79,7 +79,7 @@ function NotificationsMenuContent() {
  */
 export default function NotificationsMenu() {
   return PopupWindow({
-    name: Windows.CONTROL_CENTER,
+    name: Windows.NOTIFICATIONS_CENTER,
     exclusivity: 'exclusive',
     layout: 'top-right',
     transition: 'crossfade',

@@ -9,7 +9,7 @@ export enum Windows {
   /**
    * Notifications control center
    */
-  CONTROL_CENTER = 'notifications-menu',
+  NOTIFICATIONS_CENTER = 'notifications-menu',
 
   /**
    * Notifications popup

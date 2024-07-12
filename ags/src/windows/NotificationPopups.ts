@@ -7,7 +7,7 @@ const notifications = await Service.import('notifications');
 
 // Dismiss all notifs when control center opens
 App.connect('window-toggled', (_app, windowName: string, visible: boolean) => {
-  if (windowName !== Windows.CONTROL_CENTER || !visible) {
+  if (windowName !== Windows.NOTIFICATIONS_CENTER || !visible) {
     return;
   }
 
@@ -74,7 +74,7 @@ function NotificationsList() {
       notifications,
       (_, id) => {
         // Hide popups when control center is showing
-        if (App.getWindow(Windows.CONTROL_CENTER)?.visible) {
+        if (App.getWindow(Windows.NOTIFICATIONS_CENTER)?.visible) {
           return;
         }
         if (id === undefined) return;
