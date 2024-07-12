@@ -1,5 +1,5 @@
 window#time-menu .time-menu {
-  margin: 0px 8px;
+  margin: 0px 0px;
   padding: 8px;
   color: $foreground;
   font-size: 12px;
@@ -7,7 +7,13 @@ window#time-menu .time-menu {
   background: $bg;
   border-radius: 8px;
 
-  .calandar .calandar-header {
-    padding: 4px 4px 0;
+  .calandar {
+    .calandar-header {
+      padding: 4px 4px 0;
+    }
+
+    .calandar-days {
+      color: $color6;
+    }
   }
 }

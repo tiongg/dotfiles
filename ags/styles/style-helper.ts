@@ -1,4 +1,4 @@
-import { bash } from 'utils/utils';
+import { bash } from '@/utils/utils';
 
 const cwd = App.configDir; // ~/.config/ags
 

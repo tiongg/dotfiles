@@ -3,6 +3,7 @@ import { resetCss } from 'styles/style-helper';
 // Menus
 import NotificationsMenu from '@/windows/NotificationsMenu';
 import TimeMenu from '@/windows/TimeMenu';
+import Bar from './windows/Bar';
 import NotificationPopups from './windows/NotificationPopups';
 
 // Config
@@ -19,5 +20,7 @@ App.config({
     // Notifications
     NotificationsMenu(),
     NotificationPopups(),
+    // Bar
+    Bar(),
   ],
 });
