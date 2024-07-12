@@ -73,7 +73,7 @@ function NotificationHeader(
 
   return Widget.Box({
     className: 'notification-header',
-    homogeneous: true,
+    spacing: 8,
     children: [Title, TimeOrClose],
   });
 }
