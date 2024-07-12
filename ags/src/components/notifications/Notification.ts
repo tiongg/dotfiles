@@ -1,6 +1,6 @@
 import cn from '@/utils/cn';
 import dayjs from 'dayjs';
-import { Align } from 'types/@girs/gtk-3.0/gtk-3.0.cjs';
+import Gtk from 'gi://Gtk?version=3.0';
 import { type Notification as NotificationType } from 'types/service/notifications';
 import { type Variable as VariableType } from 'types/variable';
 
@@ -12,7 +12,7 @@ function NotificationIcon({ app_entry, app_icon, image }: NotificationType) {
       vpack: 'start',
       hexpand: false,
       className: 'notification-img',
-      valign: Align.FILL,
+      valign: Gtk.Align.FILL,
       css: `
         background-image: url("${image}");
         background-size: contain;
@@ -31,7 +31,7 @@ function NotificationIcon({ app_entry, app_icon, image }: NotificationType) {
     vpack: 'start',
     hexpand: false,
     className: 'notification-icon',
-    valign: Align.FILL,
+    valign: Gtk.Align.FILL,
     child: Widget.Icon({
       icon,
     }),
@@ -57,7 +57,7 @@ function NotificationHeader(
     xalign: 0,
     truncate: 'end',
     useMarkup: true,
-    halign: Align.START,
+    halign: Gtk.Align.START,
   });
   const TimeOrClose = Widget.Button({
     className: isHovered
@@ -69,7 +69,7 @@ function NotificationHeader(
       close();
     },
     label: label.bind(),
-    halign: Align.END,
+    halign: Gtk.Align.END,
     hexpand: true,
   });
 

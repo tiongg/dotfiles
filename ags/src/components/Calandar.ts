@@ -1,7 +1,7 @@
 import cn from '@/utils/cn';
 import dayjs, { Dayjs } from 'dayjs';
+import Gtk from 'gi://Gtk?version=3.0';
 import _ from 'lodash';
-import { Align } from 'types/@girs/gtk-3.0/gtk-3.0.cjs';
 
 /**
  * Header for calandar.
@@ -24,7 +24,7 @@ function CalandarHeader(
       Widget.Label({
         className: 'calandar-header-label',
         label: referenceDate.format('MMMM YYYY'),
-        halign: Align.START,
+        halign: Gtk.Align.START,
       }),
       // Padding
       Widget.Box({
@@ -32,7 +32,7 @@ function CalandarHeader(
       }),
       Widget.Box({
         className: 'calandar-navigation',
-        halign: Align.END,
+        halign: Gtk.Align.END,
         spacing,
         children: [
           Widget.Button({

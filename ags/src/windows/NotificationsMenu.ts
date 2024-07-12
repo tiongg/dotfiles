@@ -2,7 +2,7 @@ import Calandar from '@/components/Calandar';
 import PopupWindow from '@/components/PopupWindow';
 import NotificationList from '@/components/notifications/NotificationList';
 import { Windows } from '@/constants/windows.type';
-import { Align } from 'types/@girs/gtk-3.0/gtk-3.0.cjs';
+import Gtk from 'gi://Gtk?version=3.0';
 
 const notifications = await Service.import('notifications');
 
@@ -11,7 +11,7 @@ const notifications = await Service.import('notifications');
  */
 function NotificationsMenuCalandar() {
   return Widget.Box({
-    halign: Align.CENTER,
+    halign: Gtk.Align.CENTER,
     children: [
       Calandar({
         cellSize: 36,
@@ -44,10 +44,10 @@ function DoNotDisturb() {
     children: [
       Widget.Label({
         label: 'Do not disturb',
-        halign: Align.START,
+        halign: Gtk.Align.START,
       }),
       Widget.Switch({
-        halign: Align.END,
+        halign: Gtk.Align.END,
         active: notifications.bind('dnd'),
         onActivate: ({ active }) => {
           notifications.dnd = active;

@@ -1,4 +1,4 @@
-import { Align } from 'types/@girs/gtk-3.0/gtk-3.0.cjs';
+import Gtk from 'gi://Gtk?version=3.0';
 import { type Notification as NotificationType } from 'types/service/notifications';
 import IconButton from '../IconButton';
 import Notification from './Notification';
@@ -31,10 +31,10 @@ function NotificationsHeader() {
     children: [
       Widget.Label({
         label: 'Notifications',
-        halign: Align.START,
+        halign: Gtk.Align.START,
       }),
       IconButton({
-        halign: Align.END,
+        halign: Gtk.Align.END,
         onClicked: () => notifications.clear(),
         icon: 'cross-filled',
       }),
@@ -51,7 +51,7 @@ function EmptyNotificationsList() {
     vertical: true,
     hexpand: true,
     vexpand: hasNoNotifs,
-    valign: Align.CENTER,
+    valign: Gtk.Align.CENTER,
     visible: hasNoNotifs,
     spacing: 8,
     children: [

@@ -1,6 +1,6 @@
 import Notification from '@/components/notifications/Notification';
 import { Windows } from '@/constants/windows.type';
-import { Align } from 'types/@girs/gtk-3.0/gtk-3.0.cjs';
+import Gtk from 'gi://Gtk?version=3.0';
 import { type Notification as NotificationType } from 'types/service/notifications';
 
 const notifications = await Service.import('notifications');
@@ -62,7 +62,7 @@ function NotificationsList() {
     widthRequest: 300,
     className: 'notifications-list',
     spacing: 8,
-    valign: Align.CENTER,
+    valign: Gtk.Align.CENTER,
     vpack: 'start',
     children: notifs.map(({ widget }) => widget),
   });
