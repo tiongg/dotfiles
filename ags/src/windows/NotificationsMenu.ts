@@ -4,8 +4,6 @@ import NotificationList from '@/components/notifications/NotificationList';
 import { Windows } from '@/constants/windows.type';
 import Gtk from 'gi://Gtk?version=3.0';
 
-const notifications = await Service.import('notifications');
-
 /**
  * Calandar in notification menu
  */
@@ -21,43 +19,6 @@ function NotificationsMenuCalandar() {
 }
 
 /**
- * Controls for notification menu
- *
- * Do not distrub, etc
- */
-function NotificationsMenuControls() {
-  return Widget.Box({
-    className: 'notifications-menu-controls',
-    vertical: true,
-    children: [DoNotDisturb()],
-  });
-}
-
-/**
- * Do not disturb button
- */
-function DoNotDisturb() {
-  return Widget.Box({
-    className: 'do-not-disturb',
-    hexpand: true,
-    homogeneous: true,
-    children: [
-      Widget.Label({
-        label: 'Do not disturb',
-        halign: Gtk.Align.START,
-      }),
-      Widget.Switch({
-        halign: Gtk.Align.END,
-        active: notifications.bind('dnd'),
-        onActivate: ({ active }) => {
-          notifications.dnd = active;
-        },
-      }),
-    ],
-  });
-}
-
-/**
  * Actual content for the menu
  */
 function NotificationsMenuContent() {
@@ -66,11 +27,7 @@ function NotificationsMenuContent() {
     vertical: true,
     widthRequest: 280,
     spacing: 8,
-    children: [
-      NotificationsMenuCalandar(),
-      NotificationsMenuControls(),
-      NotificationList(),
-    ],
+    children: [NotificationsMenuCalandar(), NotificationList()],
   });
 }
 
