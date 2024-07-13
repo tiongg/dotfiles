@@ -36,7 +36,7 @@ function NotificationsHeader() {
       IconButton({
         halign: Gtk.Align.END,
         onClicked: () => notifications.clear(),
-        icon: 'cross-filled',
+        icon: 'cross-filled-symbolic',
       }),
     ],
   });
@@ -56,7 +56,7 @@ function EmptyNotificationsList() {
     spacing: 8,
     children: [
       Widget.Icon({
-        icon: 'tick-filled',
+        icon: 'tick-filled-symbolic',
       }),
       Widget.Label('All caught up!'),
     ],
