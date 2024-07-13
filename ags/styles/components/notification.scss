@@ -1,4 +1,9 @@
 .notification {  
+  background: $widget-bg;
+  border-radius: 8px;
+  margin: 0px;
+  padding: 8px 4px;
+  
   // Application icon
   .notification-icon {
     font-size: 48px;

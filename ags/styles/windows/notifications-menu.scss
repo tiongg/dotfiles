@@ -1,40 +1,17 @@
 window#notifications-menu .notifications-menu {
   margin: 8px;
-  padding: 16px;
+  padding: 12px;
   font-size: 14px;
-  color: $foreground;
+  color: $fg;
   background: $bg;
 
   border: 1px solid;
   border-radius: 8px;
-  border-color: $color6;
+  border-color: $primary;
 
-  .notifications-menu-controls {
-    padding: 4px 0;
-
-    label {
-      font-weight: 700;
-      color: $white;
-    }
-
-    .do-not-disturb {
-      switch {
-        background: darken($white, 80%);
-        padding: 4px;
-        border: none;
-        transition: 200ms ease-in;
-        border-radius: 16px;
-
-        slider {
-          box-shadow: none;
-          border: none;
-        }
-      }
-
-      switch:checked {
-        background: $color6;
-        transition: 200ms ease-in;
-      }
-    }
+  .calandar {
+    background: $widget-bg;
+    border-radius: 8px;
+    padding: 8px;
   }
 }

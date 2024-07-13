@@ -11,7 +11,13 @@ const $ = (name: string, value: string) => `$${name}: ${value};`;
 const variables = [
   $('white', '#fff'),
   $('black', '#000'),
+  // Wal values to human readable
   $('bg', 'transparentize($background, 0.05)'),
+  $('widget-bg', 'transparentize(lighten($bg, 10%), 0.5)'),
+  $('fg', '$foreground'),
+  $('primary', '$color6'),
+  $('not-so-disabled', 'transparentize($fg, 0.5)'),
+  $('disabled', 'transparentize($fg, 0.75)'),
 ];
 
 export async function resetCss() {
