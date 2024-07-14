@@ -5,6 +5,7 @@ import { forMonitors } from './utils/utils';
 import NotificationsMenu from '@/windows/NotificationsMenu';
 import TimeMenu from '@/windows/TimeMenu';
 import Bar from './windows/Bar';
+import ControlCenter from './windows/ControlCenter';
 import NotificationPopups from './windows/NotificationPopups';
 
 // Config
@@ -24,5 +25,8 @@ App.config({
     NotificationPopups(),
     // Bar
     ...forMonitors(Bar),
+    // Control center
+    // TODO: This always pops up on the first monitor
+    ControlCenter(),
   ],
 });

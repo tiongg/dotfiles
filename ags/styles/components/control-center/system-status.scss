@@ -1,0 +1,27 @@
+.system-status-widget {
+  padding: 8px;
+  border-radius: 16px;
+
+  .current-user {
+    min-width: 64px;
+    min-height: 64px;
+    background-size: cover;
+    border-radius: 999px;
+  }
+
+  .action-button {
+    border: none;
+    border-radius: 8px;
+    box-shadow: none;
+    background: transparent;
+
+    font-size: 20px;
+    text-shadow: none;
+    color: white;
+  }
+
+  .action-button:hover {
+    background: transparentize($color6, 0.3);
+    color: $fg;
+  }
+}

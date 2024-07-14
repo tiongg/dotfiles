@@ -5,6 +5,7 @@ import NetworkDisplay from '@/components/bar/NetworkDisplay';
 import SmallClock from '@/components/bar/SmallClock';
 import VolumeDisplay from '@/components/bar/VolumeDisplay';
 import Workspaces from '@/components/bar/Workspaces';
+import { Windows } from '@/constants/windows.type';
 
 const layout = {
   left: [SmallClock],
@@ -26,12 +27,17 @@ function BarContent() {
       hpack: 'center',
       children: layout.center.map((widget) => widget()),
     }),
-    endWidget: Widget.Box({
-      className: 'island right',
-      hexpand: true,
-      spacing: 12,
-      halign: Gtk.Align.END,
-      children: layout.right.map((widget) => widget()),
+    endWidget: Widget.EventBox({
+      child: Widget.Box({
+        className: 'island right',
+        hexpand: true,
+        spacing: 12,
+        halign: Gtk.Align.END,
+        children: layout.right.map((widget) => widget()),
+      }),
+      onPrimaryClick: () => {
+        App.toggleWindow(Windows.CONTROL_CENTER);
+      },
     }),
   });
 }

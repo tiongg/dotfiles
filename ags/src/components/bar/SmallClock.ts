@@ -13,6 +13,6 @@ export default function SmallClock() {
       className: 'small-clock',
       label: clock.bind().as((dt) => dt.format(format)!),
     }),
-    onPrimaryClick: () => App.ToggleWindow(Windows.CALANDAR),
+    onPrimaryClick: () => App.toggleWindow(Windows.CALANDAR),
   });
 }

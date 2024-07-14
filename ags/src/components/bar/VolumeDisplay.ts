@@ -47,9 +47,6 @@ export default function VolumeDisplay() {
       const { volume } = audio.speaker;
       audio.speaker.volume = Math.min(volume + 0.005, 1);
     },
-    onPrimaryClick: () => {
-      audio['speaker'].is_muted = !audio['speaker'].is_muted;
-    },
   }).hook(audio.speaker, (self) => {
     self.toggleClassName('muted', audio.speaker.is_muted ?? true);
   });

@@ -18,6 +18,8 @@ window {
   location: north;
   y-offset: 10%;
   transparency: "real";
+  border: 2px solid;
+  border-color: rgba(154, 157, 153, 1);
 }
 
 mainwindow {
