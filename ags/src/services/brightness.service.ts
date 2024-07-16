@@ -23,16 +23,10 @@ class BrightnessService extends Service {
   private currentScreenBrightness =
     getValue(`get -d ${backlight}`) / (this.screenMax || 1);
 
-  constructor() {
-    super();
-    const screenPath = `sys/class/backlight/${backlight}/brightness`;
-
-    Utils.monitorFile(screenPath, async (f) => {
-      const fileVal = await Utils.readFileAsync(f);
-      this.screen = Number(fileVal) / this.screenMax;
-      this.changed('screen');
-    });
-  }
+  // Track changes in a current interval
+  // This allows us to batch calls to brightnessctl
+  private SET_INTERVAL = 50;
+  private currentTimeout: number | null = null;
 
   /**
    * Screen brightness in percentage
@@ -42,12 +36,24 @@ class BrightnessService extends Service {
   }
 
   set screen(percent: number) {
-    percent = _.clamp(percent, 0, 1);
-    sh(
-      `brightnessctl set -d ${backlight} ${Math.floor(percent * 100)}% -q`
-    ).then(() => {
-      this.currentScreenBrightness = percent;
-      this.changed('screen');
+    this.currentScreenBrightness = _.clamp(percent, 0, 1);
+    this.changed('screen');
+
+    // Already pending brightness change
+    if (this.currentTimeout) {
+      return;
+    }
+
+    this.currentTimeout = Utils.timeout(this.SET_INTERVAL, () => {
+      sh(
+        `brightnessctl set -d ${backlight} ${Math.floor(this.currentScreenBrightness * 100)}% -q`
+      )
+        .then(() => {
+          this.currentTimeout = null;
+        })
+        .catch((e) => {
+          console.error(e);
+        });
     });
   }
 
@@ -61,4 +67,5 @@ class BrightnessService extends Service {
 }
 
 const brightnessService = new BrightnessService();
+
 export default brightnessService;
