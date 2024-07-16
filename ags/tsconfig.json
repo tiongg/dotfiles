@@ -21,7 +21,8 @@
       "@/utils/*": ["src/utils/*"],
       "@/components/*": ["src/components/*"],
       "@/windows/*": ["src/windows/*"],
-      "@/constants/*": ["src/constants/*"]
+      "@/constants/*": ["src/constants/*"],
+      "@/services/*": ["src/services/*"],
     }
   }
 }

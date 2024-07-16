@@ -20,6 +20,14 @@ const variables = [
   $('disabled', 'transparentize($fg, 0.75)'),
 ];
 
+// Inital application of css
+// If it fails, reset css (Build it again)
+try {
+  App.applyCss(finalCssPath, true);
+} catch (e) {
+  await resetCss();
+}
+
 export async function resetCss() {
   try {
     const fd = await bash(`fd ".scss" ${App.configDir}/styles`);
@@ -32,11 +40,8 @@ export async function resetCss() {
     await Utils.writeFile(variables.join('\n'), variablesPath);
     await Utils.writeFile(imports.join('\n'), scssPath);
     await bash(`sass ${scssPath} ${finalCssPath}`);
+    App.applyCss(finalCssPath, true);
   } catch (e) {
     console.error(e);
   }
-
-  // Apply old compiled css if it failed
-  // This happens during auto start
-  App.applyCss(finalCssPath, true);
 }

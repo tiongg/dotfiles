@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { resetCss } from 'styles/style-helper';
 import { forMonitors } from './utils/utils';
 
@@ -11,9 +12,15 @@ import NotificationPopups from './windows/NotificationPopups';
 // Config
 import './config/dayjs';
 
+// com.github.Aylur.ags.BUS_NAME
+const busName = _.last((App.applicationId ?? 'ags').split('.'));
+
 App.addIcons(`${App.configDir}/src/icons`);
-Utils.monitorFile(`${App.configDir}/styles`, resetCss);
-await resetCss();
+
+// Only watch if dev environment
+if (busName === 'dev') {
+  Utils.monitorFile(`${App.configDir}/styles`, resetCss);
+}
 
 App.config({
   windows: [
