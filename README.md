@@ -23,6 +23,7 @@ https://github.com/cenunix/dotfiles-old/blob/main/dot_config/eww/fool_moon/menu/
 1. Hyprshot - Screenshot tool
 2. pywal - Generate colors from wallpaper
 3. sddm-sugar-dark - SDDM theme
+4. brightness-ctl - Brightness control
 
 ## Random notes:
 Remember to symlink zsh config!!
