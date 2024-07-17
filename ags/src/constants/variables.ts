@@ -19,3 +19,10 @@ export const distro = {
   id: GLib.get_os_info('ID'),
   logo: GLib.get_os_info('LOGO'),
 };
+
+/**
+ * The amount to change by when scrolling.
+ *
+ * This is assuming it is a scale of 0-1
+ */
+export const SCROLL_DELTA = 0.005;

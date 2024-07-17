@@ -1,3 +1,5 @@
+import { SCROLL_DELTA } from '@/constants/variables';
+
 const audio = await Service.import('audio');
 
 function getVolumeIcon() {
@@ -21,31 +23,44 @@ function getVolumeIcon() {
 }
 
 /**
+ * Icon for current volume. Changes based on volume level
+ */
+export function VolumeIcon() {
+  return Widget.Icon({
+    className: 'volume-icon',
+  }).hook(audio.speaker, (self) => {
+    self.icon = getVolumeIcon();
+  });
+}
+
+/**
+ * Text for current volume. Changes based on volume level
+ */
+export function VolumeText() {
+  return Widget.Label({
+    className: 'volume-text',
+  }).hook(audio.speaker, (self) => {
+    const { volume } = audio.speaker;
+    self.label = `${Math.round(volume * 100)}%`;
+  });
+}
+
+/**
  * Bar display for volume
  */
 export default function VolumeDisplay() {
-  const VolumeIcon = Widget.Icon().hook(audio.speaker, (self) => {
-    self.icon = getVolumeIcon();
-  });
-
-  const VolumeText = Widget.Label().hook(audio.speaker, (self) => {
-    const { volume, is_muted } = audio.speaker;
-    const vol = is_muted ? 0 : volume;
-    self.label = `${Math.round(vol * 100)}%`;
-  });
-
   return Widget.EventBox({
     child: Widget.Box({
       spacing: 4,
-      children: [VolumeIcon, VolumeText],
+      children: [VolumeIcon(), VolumeText()],
     }),
     onScrollDown: () => {
       const { volume } = audio.speaker;
-      audio.speaker.volume = Math.max(0, volume - 0.005);
+      audio.speaker.volume = Math.max(0, volume - SCROLL_DELTA);
     },
     onScrollUp: () => {
       const { volume } = audio.speaker;
-      audio.speaker.volume = Math.min(volume + 0.005, 1);
+      audio.speaker.volume = Math.min(volume + SCROLL_DELTA, 1);
     },
   }).hook(audio.speaker, (self) => {
     self.toggleClassName('muted', audio.speaker.is_muted ?? true);

@@ -1,6 +1,28 @@
 window#control-center .control-center {
-  padding: 8px;
+  padding: 16px;
   background: $bg;
   border-radius: 16px;
 
+  $cellSize: 72px;
+  $spacing: 8px;
+  .cell {
+    border-radius: 16px;
+    background: $widget-bg;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  // 1x1 cell
+  .size-one {
+    min-height: $cellSize;
+    min-width: $cellSize;
+  }
+  
+  // 2x2 cell
+  .size-two {
+    min-height: $cellSize * 2 + $spacing;
+    min-width: $cellSize * 2 + $spacing;
+  }  
 }

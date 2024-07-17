@@ -1,14 +1,16 @@
 import PopupWindow from '@/components/PopupWindow';
+import SystemSlidersWidget from '@/components/control-center/SystemSlidersWidget';
 import SystemStatusWidget from '@/components/control-center/SystemStatusWidget';
 import { Windows } from '@/constants/windows.type';
 
 function ControlCenterContent() {
   return Widget.Box({
     className: 'control-center',
-    widthRequest: 340,
+    widthRequest: 344, // 8 * 43
     heightRequest: 1,
     spacing: 8,
-    children: [SystemStatusWidget()],
+    vertical: true,
+    children: [SystemStatusWidget(), SystemSlidersWidget()],
   });
 }
 
@@ -16,8 +18,8 @@ function ControlCenterContent() {
  * ControlCenter to manage system settings
  *
  * Contains:
- * - Sliders for Volume & Brightness
  * - Buttons for Power, Lock & Sleep
+ * - Sliders for Volume & Brightness
  * - Toggles for Mute (Mic), Do Not Disturb
  * - Menus for Network, Bluetooth
  */
