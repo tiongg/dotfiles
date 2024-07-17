@@ -2,6 +2,7 @@ import { uptime } from '@/constants/variables';
 import { sh } from '@/utils/utils';
 import Gtk from 'gi://Gtk?version=3.0';
 import IconButton, { IconButtonProps } from '../IconButton';
+import IconText from '../IconText';
 import BatteryDisplay from '../bar/BatteryDisplay';
 
 // Currently just returns the pfp
@@ -22,18 +23,11 @@ function uptimeString(up: number) {
 }
 
 function Uptime() {
-  return Widget.Box({
+  return IconText({
     halign: Gtk.Align.START,
-    spacing: 4,
     vpack: 'center',
-    children: [
-      Widget.Icon({
-        icon: 'hourglass-symbolic',
-      }),
-      Widget.Label({
-        label: uptime.bind().as(uptimeString),
-      }),
-    ],
+    icon: 'hourglass-symbolic',
+    label: uptime.bind().as(uptimeString),
   });
 }
 
