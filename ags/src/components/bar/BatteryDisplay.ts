@@ -1,6 +1,7 @@
 import IconText from '../IconText';
 
-const battery = await Service.import('battery');
+// const battery = await Service.import('battery');
+import battery from '@/services/battery.service';
 
 /**
  * Bar display for battery

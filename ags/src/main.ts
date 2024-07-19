@@ -22,6 +22,7 @@ if (busName === 'dev') {
   Utils.monitorFile(`${App.configDir}/styles`, resetCss);
 }
 
+const startTime = Date.now();
 App.config({
   windows: [
     // Calandar popup
@@ -37,3 +38,5 @@ App.config({
     ControlCenter(),
   ],
 });
+
+console.log(`App started in ${Date.now() - startTime}ms`);
