@@ -1,4 +1,5 @@
 import PopupWindow from '@/components/PopupWindow';
+import SystemButtonsWidget from '@/components/control-center/SystemButtonsWidget';
 import SystemSlidersWidget from '@/components/control-center/SystemSlidersWidget';
 import SystemStatusWidget from '@/components/control-center/SystemStatusWidget';
 import { Windows } from '@/constants/windows.type';
@@ -10,7 +11,11 @@ function ControlCenterContent() {
     heightRequest: 1,
     spacing: 8,
     vertical: true,
-    children: [SystemStatusWidget(), SystemSlidersWidget()],
+    children: [
+      SystemStatusWidget(),
+      SystemSlidersWidget(),
+      SystemButtonsWidget(),
+    ],
   });
 }
 

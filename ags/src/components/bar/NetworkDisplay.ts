@@ -23,22 +23,26 @@ function getNetworkLabel() {
   }
 }
 
-/**
- * Icon display for network
- */
-export default function NetworkDisplay() {
-  const NetworkIcon = Widget.Icon().hook(network, (self) => {
+export function NetworkIcon() {
+  return Widget.Icon().hook(network, (self) => {
     const icon = network[network.primary ?? 'wifi']?.icon_name;
     self.icon = icon || '';
     self.visible = !!icon;
   });
+}
 
-  const NetworkLabel = Widget.Label().hook(network, (self) => {
+export function NetworkLabel() {
+  return Widget.Label().hook(network, (self) => {
     self.label = getNetworkLabel();
   });
+}
 
+/**
+ * Icon display for network
+ */
+export default function NetworkDisplay() {
   return Widget.Box({
     spacing: 4,
-    children: [NetworkIcon, NetworkLabel],
+    children: [NetworkIcon(), NetworkLabel()],
   });
 }

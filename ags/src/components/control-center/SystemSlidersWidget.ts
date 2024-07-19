@@ -90,7 +90,7 @@ function VolumeSlider() {
 export default function SystemSlidersWidget() {
   return Widget.Box({
     className: 'system-sliders',
-    spacing: 16,
+    spacing: 8,
     children: [VolumeSlider(), BrightnessSlider()],
   });
 }

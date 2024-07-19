@@ -3,15 +3,22 @@ import { sh } from '@/utils/utils';
 import Gtk from 'gi://Gtk?version=3.0';
 import IconButton, { IconButtonProps } from '../IconButton';
 import IconText from '../IconText';
-import BatteryDisplay from '../bar/BatteryDisplay';
 
 // Currently just returns the pfp
 // ...its hardcoded
-function CurrentUser() {
+function CurrentUserImage() {
   return Widget.Icon({
     className: 'current-user',
     css: `background-image: url('/home/${Utils.USER}/.config/wallpaper/pfp.png');`,
     // Size set in CSS
+  });
+}
+
+function CurrentUsername() {
+  return IconText({
+    className: 'current-username',
+    icon: 'avatar-default-symbolic',
+    label: Utils.USER,
   });
 }
 
@@ -32,7 +39,7 @@ function Uptime() {
 }
 
 /**
- * Shows battery & uptime
+ * Top widget
  */
 function SystemStatus() {
   return Widget.Box({
@@ -40,7 +47,7 @@ function SystemStatus() {
     hexpand: true,
     vpack: 'center',
     spacing: 4,
-    children: [BatteryDisplay(), Uptime()],
+    children: [CurrentUsername(), Uptime()],
   });
 }
 
@@ -94,6 +101,6 @@ export default function SystemStatusWidget() {
     className: 'system-status-widget',
     spacing: 8,
     hexpand: true,
-    children: [CurrentUser(), SystemStatus(), PowerOptions()],
+    children: [CurrentUserImage(), SystemStatus(), PowerOptions()],
   });
 }

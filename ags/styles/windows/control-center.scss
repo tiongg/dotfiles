@@ -5,6 +5,7 @@ window#control-center .control-center {
 
   $cellSize: 72px;
   $spacing: 8px;
+  
   .cell {
     border-radius: 16px;
     background: $widget-bg;
@@ -18,6 +19,12 @@ window#control-center .control-center {
   .size-one {
     min-height: $cellSize;
     min-width: $cellSize;
+  }
+
+  // 2x1 cell (horizontral, vertical)
+  .size-two-one {
+    min-height: $cellSize;
+    min-width: $cellSize * 2 + $spacing;
   }
   
   // 2x2 cell
