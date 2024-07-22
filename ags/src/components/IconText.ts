@@ -20,7 +20,13 @@ export default function IconText({ icon, label, ...rest }: IconTextProps) {
   rest.spacing ??= 4;
 
   return Widget.Box({
-    children: [Widget.Icon({ icon }), Widget.Label({ label })],
+    children: [
+      Widget.Icon({
+        className: 'icon',
+        icon,
+      }),
+      Widget.Label({ label }),
+    ],
     ...rest,
   });
 }

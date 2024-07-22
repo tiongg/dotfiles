@@ -24,7 +24,9 @@ function getNetworkLabel() {
 }
 
 export function NetworkIcon() {
-  return Widget.Icon().hook(network, (self) => {
+  return Widget.Icon({
+    className: 'icon',
+  }).hook(network, (self) => {
     const icon = network[network.primary ?? 'wifi']?.icon_name;
     self.icon = icon || '';
     self.visible = !!icon;

@@ -1,7 +1,9 @@
 import IconText from '../IconText';
+import { MicIcon, MicLabel } from '../bar/MicDisplay';
 import { NetworkIcon, NetworkLabel } from '../bar/NetworkDisplay';
 
 const notification = await Service.import('notifications');
+const audio = await Service.import('audio');
 
 function Network() {
   return Widget.Button({
@@ -51,14 +53,19 @@ function DoNotDistrub() {
 function MuteMic() {
   return Widget.Button({
     className: 'cell size-two-one',
-    child: IconText({
+    child: Widget.Box({
       className: 'toggle-button',
-      icon: 'microphone-sensitivity-muted',
-      label: 'Mute',
       spacing: 8,
-      setup: (self) => {},
+      children: [MicIcon(), MicLabel()],
+      setup: (self) => {
+        self.hook(audio, (self) => {
+          self.toggleClassName('active', audio.microphone.is_muted ?? false);
+        });
+      },
     }),
-    onClicked: () => {},
+    onClicked: () => {
+      audio.microphone.is_muted = !audio.microphone.is_muted;
+    },
   });
 }
 
