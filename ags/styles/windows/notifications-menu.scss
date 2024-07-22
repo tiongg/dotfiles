@@ -1,13 +1,10 @@
 window#notifications-menu .notifications-menu {
-  margin: 8px;
   padding: 12px;
   font-size: 14px;
   color: $fg;
   background: $bg;
 
-  border: 1px solid;
-  border-radius: 8px;
-  border-color: $primary;
+  border-radius: 16px;
 
   .calandar {
     background: $widget-bg;
