@@ -1,14 +1,12 @@
 ## References
 https://github.com/sameemul-haque/dotfiles
 https://github.com/zDyanTB/HyprNova/tree/master
-https://github.com/cenunix/dotfiles-old/blob/main/dot_config/eww/fool_moon/menu/time-menu/time-menu.yuck
 
 ## Packages
 1. Hyprland - Tiling manager
-2. Waybar - Status bar
-3. Kitty - Terminal
-4. Zsh - Shell
-5. Hyprlock - Lock screen
+2. Kitty - Terminal
+3. Zsh - Shell
+4. Hyprlock - Lock screen
 
 ## Managers
 1. Wireplumber/Pipewire - Audio manager
