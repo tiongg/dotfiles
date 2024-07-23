@@ -16,14 +16,15 @@
     border-radius: 8px;
     box-shadow: none;
     background: transparent;
+    padding: 4px;
 
-    font-size: 20px;
+    font-size: 18px;
     text-shadow: none;
     color: white;
   }
 
   .action-button:hover {
-    background: transparentize($color6, 0.3);
-    color: $fg;
+    background: $primary;
+    color: $black;
   }
 }

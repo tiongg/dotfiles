@@ -36,7 +36,9 @@ function DoNotDistrub() {
     child: IconText({
       className: 'toggle-button',
       icon: 'weather-clear-night-symbolic',
-      label: 'Focus',
+      label: notification
+        .bind('dnd')
+        .as((active) => (active ? 'Focused' : 'Focus')),
       spacing: 8,
       setup: (self) => {
         self.hook(notification, (self) => {
