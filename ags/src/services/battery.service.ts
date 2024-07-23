@@ -79,11 +79,13 @@ export class BatteryService extends Service {
       Gio.DBus.system,
       'org.freedesktop.UPower',
       '/org/freedesktop/UPower/devices/DisplayDevice',
-      this._start.bind(this)
+      this._initProxy.bind(this)
     );
+
+    this._setInitalBatteryInfo();
   }
 
-  private _start() {
+  private _initProxy() {
     this._proxy.connect('g-properties-changed', () => this._sync());
     Utils.idle(this._sync.bind(this));
   }
@@ -124,6 +126,29 @@ export class BatteryService extends Service {
     this.updateProperty('energy-full', energyFull);
     this.updateProperty('energy-rate', energyRate);
     this.emit('changed');
+  }
+
+  /**
+   * Inital battery info
+   *
+   * Allows info to be set before the proxy is ready
+   */
+  async _setInitalBatteryInfo() {
+    const batteryData = await Utils.execAsync(
+      'upower -i /org/freedesktop/UPower/devices/DisplayDevice | grep -E "state|percentage|icon-name|present"'
+    );
+    const batteryInfo = batteryData.split('\n').reduce((acc, line) => {
+      const [key, value] = line.split(':').map((str) => str.trim());
+      acc[key] = value;
+      return acc;
+    }, {});
+
+    // Battery not here
+    if (batteryInfo['present'] !== 'yes') return;
+    this._available = true;
+    this._percent = parseInt(batteryInfo['percentage'].replace('%', ''));
+    this._charging = batteryInfo['state'] === 'charging';
+    this._iconName = batteryInfo['icon-name'];
   }
 }
 
