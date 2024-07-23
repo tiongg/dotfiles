@@ -1,8 +1,4 @@
-## References
-https://github.com/sameemul-haque/dotfiles
-https://github.com/zDyanTB/HyprNova/tree/master
-
-## Packages
+## Core
 1. Hyprland - Tiling manager
 2. Kitty - Terminal
 3. Zsh - Shell
@@ -23,20 +19,38 @@ https://github.com/zDyanTB/HyprNova/tree/master
 3. sddm-sugar-dark - SDDM theme
 4. brightness-ctl - Brightness control
 
-## Random notes:
-Remember to symlink zsh config!!
-Set sddm theme here: /usr/lib/sddm/sddm.conf.d/default.conf
-Send notification: notify-send 'Ryan Katto' 'Eh prod die' -i telegram -a org.telegram.desktop -u normal -c im.received -t 9999999
+## References
+https://github.com/sameemul-haque/dotfiles
 
-Ags: ags -b hypr
-Open menu: ags -b hypr -r "App.toggleWindow('time-menu');" 
-Currently symlinking esbuild to /usr/bin in order for auto start to work
-If css is not loaded, run:
-`ags -b hypr -q | ags -b hypr &`
-Icons: https://github.com/GNOME/gtk/blob/main/demos/icon-browser/icon.list
+https://github.com/zDyanTB/HyprNova/tree/master
+
+https://github.com/Aylur/dotfiles/tree/main
 
 ## TODO:
-BTOP
+BTOP:
+  - Configure it
 
 Ags:
-- Scroll left/right to adjust volume
+  - Scroll left/right to adjust volume
+  - Actual user management, instead of hard coding pfp path
+
+## Sources
+
+### Dark
+  - lock: https://www.pixiv.net/en/artworks/116555120
+  - login: https://www.pixiv.net/en/artworks/114321306
+  - main: https://www.pixiv.net/en/artworks/112863016
+
+### Light
+  - lock: https://www.pixiv.net/en/artworks/114221721
+  - login: https://www.pixiv.net/en/artworks/113657216
+  - main: https://www.pixiv.net/en/artworks/113776452
+
+### Extras
+  - frieren-dark-1: https://www.pixiv.net/en/artworks/112173308
+  - frieren-dark-2: https://www.pixiv.net/en/artworks/116092926
+  - frieren-dark-3: https://www.pixiv.net/en/artworks/106379857
+  - frieren-light-1: https://x.com/mornmeii/status/1714469543047807149
+  - frieren-light-2: https://www.pixiv.net/en/artworks/115738312
+  - unicorn-light: https://www.pixiv.net/en/artworks/82230113
+  - pfp: https://www.pixiv.net/en/artworks/113193218
