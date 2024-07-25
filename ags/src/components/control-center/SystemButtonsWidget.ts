@@ -1,19 +1,24 @@
+import cn from '@/utils/cn';
 import IconText from '../IconText';
 import { MicIcon, MicLabel } from '../bar/MicDisplay';
 import { NetworkIcon, NetworkLabel } from '../bar/NetworkDisplay';
 
 const notification = await Service.import('notifications');
 const audio = await Service.import('audio');
+const network = await Service.import('network');
 
 function Network() {
   return Widget.Button({
     className: 'cell size-two-one',
     child: Widget.Box({
-      className: 'toggle-button',
+      className: network.bind('primary').as((primary) => {
+        if (!primary) return 'toggle-button';
+        const { internet } = network[primary];
+        return cn('toggle-button', internet === 'connected' ? 'active' : '');
+      }),
       spacing: 8,
       children: [NetworkIcon(), NetworkLabel()],
     }),
-    onClicked: () => {},
   });
 }
 

@@ -83,7 +83,7 @@ export class BatteryService extends Service {
       this._initProxy.bind(this)
     );
 
-    this._setInitalBatteryInfo().catch(console.error);
+    this._setInitalBatteryInfo();
   }
 
   private _initProxy() {
@@ -138,11 +138,15 @@ export class BatteryService extends Service {
     const batteryData = await bash(
       'upower -i /org/freedesktop/UPower/devices/DisplayDevice | grep -E "state|percentage|present"'
     );
-    const batteryInfo = batteryData.split('\n').reduce((acc, line) => {
-      const [key, value] = line.split(':').map((str) => str.trim());
-      acc[key] = value;
-      return acc;
-    }, {});
+
+    const batteryInfo = batteryData.split('\n').reduce(
+      (acc, line) => {
+        const [key, value] = line.split(':').map((str) => str.trim());
+        acc[key] = value;
+        return acc;
+      },
+      {} as Record<string, string>
+    );
 
     // Battery not here
     if (batteryInfo['present'] !== 'yes') return;

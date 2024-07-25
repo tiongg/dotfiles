@@ -4,15 +4,15 @@ const network = await Service.import('network');
 
 function getWifiLabel(wifi: Wifi) {
   const { ssid, internet } = wifi;
-  if (internet !== 'connected') return 'No Internet';
+  if (internet !== 'connected') return 'Offline';
   return `${ssid}` ?? 'Unknown!';
 }
 
+//TODO: Implement this function
 function getWiredLabel(wired: Wired) {
   return 'Wired';
 }
 
-//TODO: Implement this function
 function getNetworkLabel() {
   const type = network.primary ?? 'wifi';
   switch (type) {
