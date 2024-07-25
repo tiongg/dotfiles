@@ -1,6 +1,7 @@
 //Copied from https://github.com/Aylur/ags/blob/main/src/service/battery.ts
 //Changes: sync stuff in proxy callback, rather than waiting for it to initalize
 
+import { bash } from '@/utils/utils';
 import Gio from 'gi://Gio';
 
 const DeviceState = {
@@ -82,7 +83,7 @@ export class BatteryService extends Service {
       this._initProxy.bind(this)
     );
 
-    this._setInitalBatteryInfo();
+    this._setInitalBatteryInfo().catch(console.error);
   }
 
   private _initProxy() {
@@ -134,8 +135,8 @@ export class BatteryService extends Service {
    * Allows info to be set before the proxy is ready
    */
   async _setInitalBatteryInfo() {
-    const batteryData = await Utils.execAsync(
-      'upower -i /org/freedesktop/UPower/devices/DisplayDevice | grep -E "state|percentage|icon-name|present"'
+    const batteryData = await bash(
+      'upower -i /org/freedesktop/UPower/devices/DisplayDevice | grep -E "state|percentage|present"'
     );
     const batteryInfo = batteryData.split('\n').reduce((acc, line) => {
       const [key, value] = line.split(':').map((str) => str.trim());
@@ -145,10 +146,21 @@ export class BatteryService extends Service {
 
     // Battery not here
     if (batteryInfo['present'] !== 'yes') return;
+
     this._available = true;
     this._percent = parseInt(batteryInfo['percentage'].replace('%', ''));
     this._charging = batteryInfo['state'] === 'charging';
-    this._iconName = batteryInfo['icon-name'];
+
+    // Manually dervie icon, since it might not match our icon naming
+    const fullCharged =
+      batteryInfo['state'] === 'fully-charged' ||
+      (batteryInfo['state'] === 'charging' && this._percent === 100);
+    const level = Math.floor(this._percent / 10) * 10;
+    const state = this._charging ? '-charging' : '';
+
+    this._iconName = fullCharged
+      ? 'battery-level-100-charged-symbolic'
+      : `battery-level-${level}${state}-symbolic`;
   }
 }
 
