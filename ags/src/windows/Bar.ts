@@ -27,17 +27,19 @@ function BarContent() {
       hpack: 'center',
       children: layout.center.map((widget) => widget()),
     }),
-    endWidget: Widget.EventBox({
-      child: Widget.Box({
-        className: 'island right',
-        hexpand: true,
-        spacing: 12,
-        halign: Gtk.Align.END,
-        children: layout.right.map((widget) => widget()),
+    endWidget: Widget.Box({
+      halign: Gtk.Align.END,
+      hexpand: true,
+      child: Widget.EventBox({
+        child: Widget.Box({
+          className: 'island right',
+          spacing: 12,
+          children: layout.right.map((widget) => widget()),
+        }),
+        onPrimaryClick: () => {
+          App.toggleWindow(Windows.CONTROL_CENTER);
+        },
       }),
-      onPrimaryClick: () => {
-        App.toggleWindow(Windows.CONTROL_CENTER);
-      },
     }),
   });
 }
