@@ -104,7 +104,6 @@ function NotificationBox(
       Widget.Box({
         className: 'notification-content',
         vertical: true,
-        spacing: 2,
         children: [
           NotificationHeader(notif, isHovered),
           NotificationBody(notif),

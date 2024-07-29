@@ -1,4 +1,5 @@
 window#notifications-menu .notifications-menu {
+  margin: 2px;
   padding: 12px;
   font-size: 14px;
   color: $fg;
@@ -8,7 +9,7 @@ window#notifications-menu .notifications-menu {
 
   .calandar {
     background: $widget-bg;
-    border-radius: 8px;
+    border-radius: 16px;
     padding: 8px;
   }
 }

@@ -35,7 +35,7 @@ const PopupRevealer = (
   transition: Transition = 'slide_down'
 ) =>
   Widget.Box(
-    { css: 'padding: 1px;' },
+    {},
     Widget.Revealer({
       transition,
       child: Widget.Box({
