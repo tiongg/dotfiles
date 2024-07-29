@@ -75,8 +75,7 @@ function PowerOptions() {
         onPrimaryClick: () => sh('systemctl suspend'),
       }),
       ActionButton({
-        //TODO: LOOK FOR A DIFFERNT ICON
-        icon: 'system-reboot-symbolic',
+        icon: 'restart-symbolic',
         onPrimaryClick: () => sh('reboot'),
       }),
       ActionButton({
