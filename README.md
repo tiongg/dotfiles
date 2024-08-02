@@ -1,3 +1,8 @@
+## Screenshots
+![dotfiles_main](https://github.com/user-attachments/assets/10432b0c-a525-4ab4-ae3e-9aa34429f474)
+![dotfiles_notif](https://github.com/user-attachments/assets/d2369692-548a-431d-9eb7-817956fe6371)
+
+
 ## Core
 1. Hyprland - Tiling manager
 2. Kitty - Terminal
@@ -19,6 +24,7 @@
 3. sddm-sugar-dark - SDDM theme
 4. brightness-ctl - Brightness control
 5. mpv - Media player
+6. feh - Image viewer
 
 ## References
 https://github.com/sameemul-haque/dotfiles
