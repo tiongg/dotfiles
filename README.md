@@ -18,6 +18,7 @@
 2. pywal - Generate colors from wallpaper
 3. sddm-sugar-dark - SDDM theme
 4. brightness-ctl - Brightness control
+5. mpv - Media player
 
 ## References
 https://github.com/sameemul-haque/dotfiles
@@ -54,3 +55,4 @@ Ags:
   - frieren-light-2: https://www.pixiv.net/en/artworks/115738312
   - unicorn-light: https://www.pixiv.net/en/artworks/82230113
   - pfp: https://www.pixiv.net/en/artworks/113193218
+  - logo: https://www.pixiv.net/en/artworks/120269591

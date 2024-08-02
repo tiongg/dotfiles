@@ -4,31 +4,31 @@
     "title",
     "separator",
     "os",
-    "host",
     "kernel",
     "uptime",
-    "packages",
     "shell",
-    "display",
     "de",
     "wm",
     "wmtheme",
     "theme",
     "icons",
     "font",
-    "cursor",
     "terminal",
-    "terminalfont",
     "cpu",
-    "gpu",
     "memory",
     "swap",
     "disk",
-    "localip",
-    "battery",
-    "poweradapter",
     "locale",
     "break",
     "colors"
-  ]
+  ],
+  "logo": {
+    "source": "~/.config/wallpaper/logo.jpg",
+    "height": 20,
+    "preserveAspectRatio": true,
+    "padding": {
+      "right": 2,
+      "top": 0
+    }
+  }
 }
