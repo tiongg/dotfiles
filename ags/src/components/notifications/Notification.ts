@@ -23,7 +23,7 @@ function NotificationIcon({ app_entry, app_icon, image }: NotificationType) {
     });
   }
 
-  let icon = 'info-filled';
+  let icon = 'info-filled-symbolic';
   if (Utils.lookUpIcon(app_icon)) icon = app_icon;
 
   if (Utils.lookUpIcon(app_entry)) icon = app_entry;
