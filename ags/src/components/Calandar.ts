@@ -126,9 +126,11 @@ function CalandarDates(
   // If we have less than 6 rows, fill with next month
   // This is to account for months that have 5 weeks (i.e Jun 2024)
   if (dates.length / 7 < 6 && keepConsisent) {
-    const fillAmount = 7 * 6 - dates.length;
-    const fillDates = _.range(1, fillAmount + 1).map((offset) => ({
-      day: lastDay.add(offset, 'days'),
+    const initalOffset = 6 - lastDay.day();
+    // Current calandar will already have 7 columns (Sun - Sat)
+    // Only have to fill the next week
+    const fillDates = _.range(7).map((offset) => ({
+      day: lastDay.add(initalOffset + offset + 1, 'days'),
       isInMonth: false,
     }));
 
@@ -184,7 +186,7 @@ export default function Calandar({
 }: CalandarProps = {}) {
   const currentDate = dayjs();
   //Refence date will be 01/Month/Year
-  const referenceDate = Variable(currentDate.day(1));
+  const referenceDate = Variable(currentDate.date(1));
 
   return Widget.Box({
     className: 'calandar',
