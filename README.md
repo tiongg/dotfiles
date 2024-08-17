@@ -1,6 +1,8 @@
 ## Screenshots
+![dotfiles_login](https://github.com/user-attachments/assets/5f79a465-51da-4824-ba9b-861c481c487a)
 ![dotfiles_main](https://github.com/user-attachments/assets/10432b0c-a525-4ab4-ae3e-9aa34429f474)
 ![dotfiles_notif](https://github.com/user-attachments/assets/d2369692-548a-431d-9eb7-817956fe6371)
+![dotfiles_lock](https://github.com/user-attachments/assets/3e693a13-0292-4c26-9a7f-0934a5b4159e)
 
 
 ## Core
