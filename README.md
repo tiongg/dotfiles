@@ -25,6 +25,8 @@
 4. brightness-ctl - Brightness control
 5. mpv - Media player
 6. feh - Image viewer
+7. timeshift - System shapshot
+8. quickemu - Emulation manager
 
 ## References
 https://github.com/sameemul-haque/dotfiles
