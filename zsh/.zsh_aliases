@@ -12,7 +12,7 @@ alias gc="git commit"
 alias gcm="git commit -m"
 alias gcmd="git commit -m \"$(date +%d/%m/%Y)\""
 alias gcf="git commit --fixup"
-alias gca="git commit --amend"
+alias gca="git commit --amend --no-edit"
 
 # Branching
 alias gb="git branch"
