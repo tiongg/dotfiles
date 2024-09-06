@@ -21,7 +21,15 @@ function BarContent() {
       hexpand: true,
       halign: Gtk.Align.START,
       children: layout.left.map((widget) => widget()),
-    }),
+    }).hook(
+      App,
+      (self, windowName, visible) => {
+        if (windowName === Windows.CALANDAR) {
+          self.toggleClassName('active', visible);
+        }
+      },
+      'window-toggled'
+    ),
     centerWidget: Widget.Box({
       className: 'island center',
       hpack: 'center',
