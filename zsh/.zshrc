@@ -1,5 +1,6 @@
 # Path
 path+=('/home/tiong/.local')
+path+=('/home/tiong/.cargo/bin')
 
 export path
 
@@ -20,4 +21,8 @@ export NVM_DIR="$HOME/.nvm"
 # Remove EOL mark 
 # https://unix.stackexchange.com/questions/167582/why-zsh-ends-a-line-with-a-highlighted-percent-symbol
 #PROMPT_EOL_MARK=
+
+# Fly stuff
+export FLYCTL_INSTALL="/home/tiong/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
 

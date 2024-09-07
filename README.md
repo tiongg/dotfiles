@@ -29,6 +29,7 @@
 6. feh - Image viewer
 7. timeshift - System shapshot
 8. quickemu - Emulation manager
+9. Kanata - Keyboard remapper
 
 ## References
 https://github.com/sameemul-haque/dotfiles
