@@ -26,4 +26,11 @@ export enum Windows {
    * General control center for managing system settings
    */
   CONTROL_CENTER = 'control-center',
+
+  /**
+   * Application launcher
+   *
+   * Used to search and launch applications, similar to wofi
+   */
+  APPLICATION_LAUNCHER = 'application-launcher',
 }

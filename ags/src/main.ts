@@ -8,6 +8,7 @@ import TimeMenu from '@/windows/TimeMenu';
 import Bar from './windows/Bar';
 import ControlCenter from './windows/ControlCenter';
 import NotificationPopups from './windows/NotificationPopups';
+import ApplicationLauncher from './windows/SearchBar';
 
 // Config
 import './config/dayjs';
@@ -36,6 +37,8 @@ App.config({
     // Control center
     // TODO: This always pops up on the first monitor
     ControlCenter(),
+    // Application launcher
+    ApplicationLauncher(),
   ],
 });
 
