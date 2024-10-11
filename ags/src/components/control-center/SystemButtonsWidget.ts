@@ -6,6 +6,7 @@ import { NetworkIcon, NetworkLabel } from '../bar/NetworkDisplay';
 const notification = await Service.import('notifications');
 const audio = await Service.import('audio');
 const network = await Service.import('network');
+const bluetooth = await Service.import('bluetooth');
 
 function Network() {
   return Widget.Button({
@@ -26,8 +27,12 @@ function Bluetooth() {
   return Widget.Button({
     className: 'cell size-two-one',
     child: IconText({
-      className: 'toggle-button',
-      icon: 'bluetooth-active-symbolic',
+      className: bluetooth.bind('enabled').as((enabled) => {
+        return cn('toggle-button', enabled ? 'active' : '');
+      }),
+      icon: bluetooth.bind('enabled').as((enabled) => {
+        return `bluetooth-${enabled ? 'active' : 'disabled'}-symbolic`;
+      }),
       label: 'Bluetooth',
       spacing: 8,
     }),
@@ -85,6 +90,7 @@ function MuteMic() {
  * - Mute mic (Toggle)
  * - Do not disturb (Toggle)
  */
+// TODO: Consider moving individual buttons out of this file
 export default function SystemButtonsWidget() {
   return Widget.Box({
     className: 'system-buttons',

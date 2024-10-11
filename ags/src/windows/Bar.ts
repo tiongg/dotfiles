@@ -13,42 +13,58 @@ const layout = {
   right: [NetworkDisplay, VolumeDisplay, BatteryDisplay],
 };
 
+function LeftIsland() {
+  return Widget.Box({
+    className: 'island left',
+    hexpand: true,
+    halign: Gtk.Align.START,
+    children: layout.left.map((widget) => widget()),
+  }).hook(
+    App,
+    (self, windowName, visible) => {
+      if (windowName === Windows.CALANDAR) {
+        self.toggleClassName('active', visible);
+      }
+    },
+    'window-toggled'
+  );
+}
+
+function RightIsland() {
+  return Widget.Box({
+    halign: Gtk.Align.END,
+    hexpand: true,
+    child: Widget.EventBox({
+      child: Widget.Box({
+        className: 'island right',
+        spacing: 12,
+        children: layout.right.map((widget) => widget()),
+      }).hook(
+        App,
+        (self, windowName, visible) => {
+          if (windowName === Windows.CONTROL_CENTER) {
+            self.toggleClassName('active', visible);
+          }
+        },
+        'window-toggled'
+      ),
+      onPrimaryClick: () => {
+        App.toggleWindow(Windows.CONTROL_CENTER);
+      },
+    }),
+  });
+}
+
 function BarContent() {
   return Widget.CenterBox({
     className: 'bar-content',
-    startWidget: Widget.Box({
-      className: 'island left',
-      hexpand: true,
-      halign: Gtk.Align.START,
-      children: layout.left.map((widget) => widget()),
-    }).hook(
-      App,
-      (self, windowName, visible) => {
-        if (windowName === Windows.CALANDAR) {
-          self.toggleClassName('active', visible);
-        }
-      },
-      'window-toggled'
-    ),
+    startWidget: LeftIsland(),
     centerWidget: Widget.Box({
       className: 'island center',
       hpack: 'center',
       children: layout.center.map((widget) => widget()),
     }),
-    endWidget: Widget.Box({
-      halign: Gtk.Align.END,
-      hexpand: true,
-      child: Widget.EventBox({
-        child: Widget.Box({
-          className: 'island right',
-          spacing: 12,
-          children: layout.right.map((widget) => widget()),
-        }),
-        onPrimaryClick: () => {
-          App.toggleWindow(Windows.CONTROL_CENTER);
-        },
-      }),
-    }),
+    endWidget: RightIsland(),
   });
 }
 

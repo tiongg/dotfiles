@@ -1,8 +1,9 @@
 window#control-center .control-center {
-  margin: 0 2px;
+  margin: 0;
   padding: 16px;
   background: $bg;
   border-radius: 16px;
+  border-top-right-radius: 0;
 
   $cellSize: 72px;
   $spacing: 8px;
