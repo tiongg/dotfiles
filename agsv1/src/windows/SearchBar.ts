@@ -155,7 +155,7 @@ function LauncherContent() {
     widthRequest: 565,
     spacing: 8,
     children: [LauncherSearch(), AppsList()],
-  });
+  }).keybind('downarrow', () => {});
 }
 
 /**
@@ -167,5 +167,6 @@ export default function ApplicationLauncher() {
     child: LauncherContent(),
     layout: 'top-center',
     exclusivity: 'exclusive',
+    transition: 'crossfade',
   });
 }
