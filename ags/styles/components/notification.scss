@@ -1,0 +1,52 @@
+.notification {  
+  background: $widget-bg;
+  border-radius: 16px;
+  margin: 0px;
+  padding: 8px;
+  
+  // Application icon
+  .notification-icon {
+    font-size: 48px;
+  }
+
+  // Custom image
+  // i.e telegram send image url of profile pic instead
+  .notification-img {
+    min-width: 48px;
+    min-height: 48px;
+  }
+
+  .notification-title {
+    font-weight: 700;
+    color: $white;
+  }
+
+  .notification-time {
+    color: darken($white, 40%);
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    text-shadow: none;
+    transition: 0;
+  }
+
+  .notification-time.close-mode {
+    background: transparentize(darken($white, 40%), 0.8);
+    color: darken($white, 20%);
+    padding: 0 8px;
+    border-radius: 16px;
+  }
+
+  // Hovering over the 'Close' button
+  .notification-time.close-mode:hover {
+    color: $white;
+    background: transparentize(darken($white, 40%), 0.7);
+  }
+
+  .notification-body {
+    color: $foreground
+  }
+}

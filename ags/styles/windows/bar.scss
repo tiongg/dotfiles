@@ -1,0 +1,30 @@
+.bar {
+  background-color: transparent;
+  color: $primary;
+  font-weight: bold;
+  font-size: 16px;
+
+  .bar-content {
+    .island {
+      padding: 2px 8px 4px;
+      background-color: transparentize($background, 0.5);
+    }
+
+    .left {
+      border-bottom-right-radius: 12px;
+    }
+
+    .center {
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+    }
+
+    .right {
+      border-bottom-left-radius: 12px;
+    }
+
+    .active {
+      border-radius: 0px;
+    }
+  }
+}

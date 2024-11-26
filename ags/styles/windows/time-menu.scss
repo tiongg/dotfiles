@@ -1,0 +1,16 @@
+window#time-menu .time-menu {
+  margin: 0 0px;
+  padding: 8px 6px;
+  color: $fg;
+  font-size: 12px;
+  background: $bg;
+  // border-radius: 8px;
+  // border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 12px;
+
+  .calandar {
+    .calandar-header {
+      padding: 4px 4px 0;
+    }
+  }
+}

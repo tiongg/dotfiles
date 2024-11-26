@@ -1,0 +1,43 @@
+.calandar {
+  .calandar-header {
+    padding: 0px 4px 0;
+  }
+
+  .calandar-header-label {
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .calandar-navigation {
+    .calandar-button {
+      border: 0;
+      border-radius: 4px;
+      margin: 0;
+      padding: 0;
+      background: transparent;
+      box-shadow: none;
+      color: transparentize($foreground, 0.5);
+      text-shadow: none;
+    }
+
+    .calandar-button:hover {
+      color: $foreground;
+      background: transparentize($color6, 0.3);
+    }
+  }
+
+
+  .calandar-days {
+    font-weight: 700;
+    color: $color6;
+  }
+
+  .today {
+    background-color: transparentize($color6, 0.25);
+    border-radius: 4px;
+  }
+
+  .disabled {
+    color: transparentize($foreground, 0.75)
+  }
+}
