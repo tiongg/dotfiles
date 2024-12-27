@@ -1,3 +1,4 @@
+import { Windows } from '@/constants/windows.type';
 import { App, Astal, Gdk, Gtk } from 'astal/gtk3';
 import BatteryDisplay from './BatteryDisplay';
 import NetworkDisplay from './NetworkDisplay';
@@ -22,7 +23,7 @@ function LeftIsland() {
 function RightIsland() {
   return (
     <box halign={Gtk.Align.END} hexpand={true}>
-      <eventbox>
+      <eventbox onClick={() => App.toggle_window(Windows.CONTROL_CENTER)}>
         <box className="island right" spacing={12}>
           {layout.right.map(widget => widget())}
         </box>

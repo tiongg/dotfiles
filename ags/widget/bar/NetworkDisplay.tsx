@@ -11,7 +11,7 @@ function getWifiLabel(wifi: Network.Wifi) {
     case Network.Internet.CONNECTING:
       return 'Connecting...';
     case Network.Internet.DISCONNECTED:
-      return 'Disconnecting...';
+      return 'No Internet';
   }
 }
 
@@ -20,7 +20,8 @@ function getWiredLabel(wired: Network.Wired) {
   return 'Wired';
 }
 
-function getNetworkLabel() {
+// TODO: Make this bindable
+export function getNetworkLabel() {
   const type = network.primary ?? Network.Primary.WIFI;
   switch (type) {
     case Network.Primary.WIFI:
@@ -30,17 +31,16 @@ function getNetworkLabel() {
   }
 }
 
+export function getNetworkIcon() {
+  return bind(network, 'primary').as(primary => {
+    const icon =
+      network[primary === Network.Primary.WIFI ? 'wifi' : 'wired']?.icon_name;
+    return icon || '';
+  });
+}
+
 export function NetworkIcon() {
-  return (
-    <icon
-      icon={bind(network, 'primary').as(primary => {
-        const icon =
-          network[primary === Network.Primary.WIFI ? 'wifi' : 'wired']
-            ?.icon_name;
-        return icon || '';
-      })}
-    />
-  );
+  return <icon icon={getNetworkIcon()} />;
 }
 
 export function NetworkLabel() {

@@ -2,8 +2,7 @@ import { bind, Variable } from 'astal';
 import Wp from 'gi://AstalWp';
 import _ from 'lodash';
 
-const audio = Wp.get_default()!.audio;
-const speaker = audio.get_default_speaker()!;
+const speaker = Wp.get_default()!.audio?.get_default_speaker()!;
 
 function getVolumeIcon(volume: number, mute: boolean) {
   const vol = mute ? 0 : volume * 100;
@@ -60,7 +59,9 @@ export default function VolumeDisplay() {
         const { volume } = speaker;
         speaker.volume = _.clamp(volume - 0.05 * e.delta_y, 0, 1);
       }}
-      className="volume-display"
+      className={bind(speaker, 'mute').as(mute =>
+        mute ? 'muted volume-display' : 'volume-display'
+      )}
     >
       <box spacing={4}>
         <VolumeIcon />
