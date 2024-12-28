@@ -26,3 +26,10 @@ export const distro = {
  * This is assuming it is a scale of 0-1
  */
 export const SCROLL_DELTA = 0.005;
+
+/**
+ * The key code for the escape key.
+ *
+ * Different from Gdk.KEY_Escape
+ */
+export const ESCAPE_KEY = 9;

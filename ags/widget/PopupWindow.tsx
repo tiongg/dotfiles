@@ -1,4 +1,5 @@
-import { App, Astal, Gdk, Gtk } from 'astal/gtk3';
+import { ESCAPE_KEY } from '@/constants/variables';
+import { App, Astal, Gtk } from 'astal/gtk3';
 import type {
   EventBoxProps,
   RevealerProps,
@@ -53,22 +54,22 @@ export function Padding({
 function PopupRevealer({
   name,
   child,
-  transition = Gtk.RevealerTransitionType.SLIDE_DOWN,
+  transition = Gtk.RevealerTransitionType.CROSSFADE,
 }: PopupRevealerProps) {
   return (
-    <box>
-      <revealer
-        transitionType={transition}
-        transitionDuration={200}
-        setup={self => {
-          App.connect('window-toggled', (_, window) => {
-            if (window.name === name) self.reveal_child = window.visible;
-          });
-        }}
-      >
-        <box className="window-content">{child}</box>
-      </revealer>
-    </box>
+    <revealer
+      transitionType={transition}
+      transitionDuration={200}
+      setup={self => {
+        App.connect('window-toggled', (_, window) => {
+          if (window.name === name) {
+            self.revealChild = window.visible;
+          }
+        });
+      }}
+    >
+      <box className="window-content">{child}</box>
+    </revealer>
   );
 }
 
@@ -180,15 +181,15 @@ export default function PopupWindow({
 }: PopupWindowProps) {
   return (
     <window
+      application={App}
       name={name}
       className={`${name} popup-window`}
-      setup={w =>
-        w.connect('key-press-event', (_, e) => {
-          if (e.keyval === Gdk.KEY_Escape) App.toggle_window(name);
-        })
-      }
+      onKeyPressEvent={(_, event) => {
+        const [_keyEvent, keyCode] = event.get_keycode();
+        if (keyCode === ESCAPE_KEY) App.toggle_window(name);
+      }}
       visible={false}
-      keymode={Astal.Keymode.ON_DEMAND}
+      keymode={Astal.Keymode.EXCLUSIVE}
       exclusivity={exclusivity}
       layer={Astal.Layer.TOP}
       anchor={

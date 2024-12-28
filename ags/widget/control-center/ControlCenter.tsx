@@ -1,5 +1,5 @@
 import { Windows } from '@/constants/windows.type';
-import { App, Gtk } from 'astal/gtk3';
+import { Gtk } from 'astal/gtk3';
 import PopupWindow from '../PopupWindow';
 import SystemButtonsWidget from './SystemButtonsWidget';
 import SystemSlidersWidget from './SystemSlidersWidget';
@@ -33,12 +33,11 @@ function ControlCenterContent() {
 export default function ControlCenter() {
   return (
     <PopupWindow
-      application={App}
       monitor={0}
       name={Windows.CONTROL_CENTER}
       layout="top-right"
       child={<ControlCenterContent />}
-      transition={Gtk.RevealerTransitionType.CROSSFADE}
+      transition={Gtk.RevealerTransitionType.SLIDE_DOWN}
     />
   );
 }

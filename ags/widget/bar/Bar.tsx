@@ -1,4 +1,5 @@
 import { Windows } from '@/constants/windows.type';
+import { toggleWindow } from '@/utils/toggle-window';
 import { App, Astal, Gdk, Gtk } from 'astal/gtk3';
 import BatteryDisplay from './BatteryDisplay';
 import NetworkDisplay from './NetworkDisplay';
@@ -15,7 +16,13 @@ const layout = {
 function LeftIsland() {
   return (
     <box className="island left" hexpand={true} halign={Gtk.Align.START}>
-      {layout.left.map(widget => widget())}
+      <eventbox
+        onClick={() => {
+          toggleWindow(Windows.CALANDAR);
+        }}
+      >
+        {layout.left.map(widget => widget())}
+      </eventbox>
     </box>
   );
 }
@@ -23,8 +30,22 @@ function LeftIsland() {
 function RightIsland() {
   return (
     <box halign={Gtk.Align.END} hexpand={true}>
-      <eventbox onClick={() => App.toggle_window(Windows.CONTROL_CENTER)}>
-        <box className="island right" spacing={12}>
+      <eventbox
+        onClick={() => {
+          toggleWindow(Windows.CONTROL_CENTER);
+        }}
+      >
+        <box
+          className="island right"
+          spacing={12}
+          setup={self => {
+            App.connect('window-toggled', (_, window) => {
+              if (window.name === Windows.CONTROL_CENTER) {
+                self.toggleClassName('active', window.visible);
+              }
+            });
+          }}
+        >
           {layout.right.map(widget => widget())}
         </box>
       </eventbox>
