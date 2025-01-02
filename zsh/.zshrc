@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/home/tiong/.zsh/completions:"* ]]; then export FPATH="/home/tiong/.zsh/completions:$FPATH"; fi
 # Path
 path+=('/home/tiong/.local')
 path+=('/home/tiong/.cargo/bin')
@@ -26,3 +28,4 @@ export NVM_DIR="$HOME/.nvm"
 export FLYCTL_INSTALL="/home/tiong/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
+. "/home/tiong/.deno/env"

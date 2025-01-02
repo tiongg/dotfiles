@@ -1,5 +1,6 @@
 import { sh } from '@/utils/utils';
 import { bind } from 'astal';
+import { Gtk } from 'astal/gtk3';
 import Hyprland from 'gi://AstalHyprland';
 import _ from 'lodash';
 
@@ -20,11 +21,15 @@ function Workspace({ workspace }: WorkSpaceProps) {
   return (
     <button
       className="workspace"
-      // TODO: This is deprecated
-      xalign={0}
-      label={bind(hyprland, 'focusedWorkspace').as(focused =>
-        focused.id === workspace ? '' : ''
-      )}
+      halign={Gtk.Align.FILL}
+      child={
+        <label
+          xalign={0}
+          label={bind(hyprland, 'focusedWorkspace').as(focused =>
+            focused.id === workspace ? '' : ''
+          )}
+        />
+      }
       onClicked={() => changeWorkspace(workspace)}
     />
   );
