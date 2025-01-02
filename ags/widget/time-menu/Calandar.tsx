@@ -48,7 +48,7 @@ function CalandarHeader({
   cellSize -= spacing;
 
   return (
-    <box className="calandar-header" homogeneous>
+    <box className="calandar-header" hexpand={false}>
       <label
         className="calandar-header-label"
         halign={Gtk.Align.START}
@@ -58,6 +58,7 @@ function CalandarHeader({
         className="calandar-navigation"
         halign={Gtk.Align.END}
         spacing={spacing}
+        hexpand
       >
         <button
           className="calandar-button"
@@ -93,7 +94,7 @@ function CalandarDays({ cellSize }: CalandarDaysProps) {
   const daysOfWeek = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 
   return (
-    <box className="calandar-days">
+    <box className="calandar-days" name="calandar-days">
       {daysOfWeek.map(day => (
         <label
           className="calandar-day"
@@ -169,7 +170,11 @@ function CalandarDates({
   const dateRows = _.chunk(dates, 7);
 
   return (
-    <box className="calandar-dates" vertical>
+    <box
+      className="calandar-dates"
+      vertical
+      name={`${referenceDate.format('%B-%Y')}`}
+    >
       {dateRows.map(dates => (
         <box className="calandar-rows">
           {dates.map(({ day, isInMonth }) => (
@@ -206,21 +211,52 @@ export default function Calandar({
     0
   );
   const referenceDateVariable = Variable(startOfMonth);
+  // Used to track if transitioning to next or prev month
+  let prevDate = referenceDateVariable.get();
 
   return (
     <box className="calandar" vertical>
-      {bind(referenceDateVariable).as(refenceDate => [
-        <CalandarHeader
-          referenceDateVariable={referenceDateVariable}
-          cellSize={cellSize}
-        />,
-        <CalandarDays cellSize={cellSize} />,
-        <CalandarDates
-          referenceDate={refenceDate}
-          cellSize={cellSize}
-          keepConsisent={keepConsisent}
-        />,
-      ])}
+      <CalandarHeader
+        referenceDateVariable={referenceDateVariable}
+        cellSize={cellSize}
+      />
+      <CalandarDays cellSize={cellSize} />
+      <stack
+        // Using SLIDE_LEFT_RIGHT doesn't work
+        // The reference date is updated before the transition finishes
+        // It will always transition to the right
+        transitionType={bind(referenceDateVariable).as(date => {
+          const diff = date.difference(prevDate);
+          prevDate = date;
+          return diff > 0
+            ? Gtk.StackTransitionType.SLIDE_LEFT
+            : Gtk.StackTransitionType.SLIDE_RIGHT;
+        })}
+        transitionDuration={200}
+        shown={bind(referenceDateVariable).as(
+          referenceDate => referenceDate.format('%B-%Y')!
+        )}
+      >
+        {bind(referenceDateVariable).as(referenceDate => (
+          <>
+            <CalandarDates
+              referenceDate={referenceDateVariable.get().add_months(-1)!}
+              cellSize={cellSize}
+              keepConsisent={keepConsisent}
+            />
+            <CalandarDates
+              referenceDate={referenceDate}
+              cellSize={cellSize}
+              keepConsisent={keepConsisent}
+            />
+            <CalandarDates
+              referenceDate={referenceDateVariable.get().add_months(1)!}
+              cellSize={cellSize}
+              keepConsisent={keepConsisent}
+            />
+          </>
+        ))}
+      </stack>
     </box>
   );
 }

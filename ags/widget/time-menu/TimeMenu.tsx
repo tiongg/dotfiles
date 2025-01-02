@@ -12,7 +12,7 @@ export default function TimeMenu() {
       transition={Gtk.RevealerTransitionType.SLIDE_DOWN}
     >
       <box className="time-menu">
-        <Calandar cellSize={30} keepConsisent={false} />
+        <Calandar cellSize={30} keepConsisent />
       </box>
     </PopupWindow>
   );
