@@ -2,7 +2,13 @@
   .empty-notifications {
     image {
       color: $white;
-      font-size: 120px;
+    }
+  }
+
+  scrollable {
+    .frame {
+      border-radius: 8px;
+      border: none;
     }
   }
 

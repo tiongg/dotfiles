@@ -63,6 +63,7 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
   return (
     <window
       className="bar"
+      name={`${Windows.BAR}-${gdkmonitor.get_display().get_name()}`}
       gdkmonitor={gdkmonitor}
       exclusivity={Astal.Exclusivity.EXCLUSIVE}
       anchor={

@@ -1,8 +1,17 @@
 export enum Windows {
   /**
-   * Calandar menu.
+   * Bar
    *
-   * Used by bar to show dropdown calandar.
+   * Top status bar. Used in conjunction with monitor id to identify the bar
+   *
+   * i.e bar-wayland-1
+   */
+  BAR = 'bar',
+
+  /**
+   * Calandar menu
+   *
+   * Used by bar to show dropdown calandar
    */
   CALANDAR = 'time-menu',
 

@@ -3,13 +3,14 @@ import cn from '@/utils/cn';
 import { bind } from 'astal';
 import Bluetooth from 'gi://AstalBluetooth';
 import Network from 'gi://AstalNetwork';
+import Notifd from 'gi://AstalNotifd';
 import Wp from 'gi://AstalWp';
 import { getMicIcon, getMicLabel } from '../bar/MicDisplay';
 import { getNetworkIcon, getNetworkLabel } from '../bar/NetworkDisplay';
 
 // Uncomment when ready
 // Clashes with agsv1
-// const notifications = Notifd.get_default();
+const notifications = Notifd.get_default();
 const audio = Wp.get_default()!;
 const mic = audio.get_default_microphone()!;
 const network = Network.get_default();
@@ -54,25 +55,25 @@ function BluetoothWidget() {
 }
 
 function DoNotDistrub() {
-  // return Widget.Button({
-  //   className: 'cell size-two-one',
-  //   child: IconText({
-  //     className: 'toggle-button',
-  //     icon: 'weather-clear-night-symbolic',
-  //     label: notification
-  //       .bind('dnd')
-  //       .as(active => (active ? 'Focused' : 'Focus')),
-  //     spacing: 8,
-  //     setup: self => {
-  //       self.hook(notification, self => {
-  //         self.toggleClassName('active', notification.dnd);
-  //       });
-  //     },
-  //   }),
-  //   onClicked: () => {
-  //     notification.dnd = !notification.dnd;
-  //   },
-  // });
+  return (
+    <button
+      className="cell size-two-one"
+      onClick={() => {
+        notifications.dontDisturb = !notifications.dontDisturb;
+      }}
+    >
+      <IconText
+        className={bind(notifications, 'dontDisturb').as(dnd => {
+          return cn('toggle-button', dnd ? 'active' : '');
+        })}
+        icon="weather-clear-night-symbolic"
+        label={bind(notifications, 'dontDisturb').as(dnd =>
+          dnd ? 'Focused' : 'Focus'
+        )}
+        spacing={8}
+      />
+    </button>
+  );
 }
 
 function MuteMic() {
@@ -113,7 +114,7 @@ export default function SystemButtonsWidget() {
         <BluetoothWidget />
       </box>
       <box spacing={8}>
-        {/* <DoNotDistrub /> */}
+        <DoNotDistrub />
         <MuteMic />
       </box>
     </box>

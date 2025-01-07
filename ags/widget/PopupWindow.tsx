@@ -84,8 +84,20 @@ const Layout = (
 ) => {
   // Fullsize aware padding
   // Padding is only applied when the window is not fullsize
-  const FSPadding = ({ name }: { name: string }) => (
-    <Padding name={name} hexpand={!fullsize} vexpand={!fullsize} />
+  const FSPadding = ({
+    name,
+    hexpand,
+    vexpand,
+  }: {
+    name: string;
+    hexpand?: boolean;
+    vexpand?: boolean;
+  }) => (
+    <Padding
+      name={name}
+      hexpand={!fullsize && hexpand}
+      vexpand={!fullsize && vexpand}
+    />
   );
 
   return {
@@ -115,7 +127,7 @@ const Layout = (
         <Padding name={name} />
         <box vertical>
           <PopupRevealer name={name} child={child} transition={transition} />
-          <Padding name={name} hexpand={false} />
+          <FSPadding name={name} hexpand={false} />
         </box>
       </box>
     ),
