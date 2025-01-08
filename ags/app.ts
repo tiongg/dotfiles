@@ -1,10 +1,11 @@
 import { App } from 'astal/gtk3';
-import style from './styles/style.scss';
-import Bar from './widget/bar/Bar';
-import ControlCenter from './widget/control-center/ControlCenter';
-
 import { Windows } from './constants/windows.type';
 import { resetCss } from './styles/style-helper';
+import style from './styles/style.scss';
+
+import ApplicationLauncher from './widget/application-launcher/ApplicationLauncher';
+import Bar from './widget/bar/Bar';
+import ControlCenter from './widget/control-center/ControlCenter';
 import NotificationPopups from './widget/notifications/NotificationPopups';
 import NotificationsCenter from './widget/notifications/NotificationsCenter';
 import TimeMenu from './widget/time-menu/TimeMenu';
@@ -18,6 +19,7 @@ App.start({
     TimeMenu();
     NotificationPopups();
     NotificationsCenter();
+    ApplicationLauncher();
     App.get_monitors().map(Bar);
     console.log('App started');
   },
@@ -35,6 +37,10 @@ App.requestHandler = (request, response) => {
     }
     case 'toggle-notification-center': {
       App.toggle_window(Windows.NOTIFICATIONS_CENTER);
+      break;
+    }
+    case 'toggle-application-launcher': {
+      App.toggle_window(Windows.APPLICATION_LAUNCHER);
       break;
     }
   }

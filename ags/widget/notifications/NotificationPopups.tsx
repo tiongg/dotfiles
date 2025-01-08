@@ -10,7 +10,7 @@ const notifd = Notifd.get_default();
 // Dismiss all notifs when control center opens
 App.connect('window-toggled', (_, window) => {
   if (window.name !== Windows.CONTROL_CENTER) return;
-  if (App.get_window(Windows.CONTROL_CENTER)!.visible) return;
+  if (window.visible) return;
 
   for (const notification of notifd.get_notifications()) {
     notification.dismiss();

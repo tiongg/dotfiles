@@ -1,3 +1,5 @@
+import { GLib } from 'astal';
+import { Astal } from 'astal/gtk3';
 import { execAsync } from 'astal/process';
 
 /**
@@ -22,4 +24,18 @@ export async function bash(commands: string | string[], ...args: unknown[]) {
  */
 export async function sh(cmd: string | string[]) {
   return execAsync(cmd);
+}
+
+/**
+ * Checks if icon exists, if not return fallback
+ * @returns icon or fallback
+ */
+export function iconOrFallback(
+  icon: string | null,
+  fallback = 'image-missing-symbolic'
+) {
+  if (!icon) return fallback;
+  if (GLib.file_test(icon, GLib.FileTest.EXISTS)) return icon;
+  if (Astal.Icon.lookup_icon(icon)) return icon;
+  return fallback;
 }

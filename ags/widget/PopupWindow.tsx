@@ -136,7 +136,7 @@ const Layout = (
         <Padding name={name} />
         <box vertical>
           <PopupRevealer name={name} child={child} transition={transition} />
-          <FSPadding name={name} />
+          <FSPadding name={name} hexpand={false} />
         </box>
         <Padding name={name} />
       </box>
