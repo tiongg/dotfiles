@@ -4,5 +4,8 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.17.13"
+  },
+  "scripts": {
+    "build": "ags bundle ~/.config/ags/app.ts ~/.config/shell --root ~/.config/ags && chmod +x ~/.config/shell"
   }
 }

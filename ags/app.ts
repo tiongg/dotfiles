@@ -1,3 +1,5 @@
+#!/usr/bin/gjs -m
+
 import { App } from 'astal/gtk3';
 import { Windows } from './constants/windows.type';
 import { resetCss } from './styles/style-helper';
