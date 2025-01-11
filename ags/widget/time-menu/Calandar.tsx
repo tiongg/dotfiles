@@ -1,3 +1,4 @@
+import { isToday } from '@/utils/utils';
 import { bind, Variable } from 'astal';
 import { Gtk } from 'astal/gtk3';
 import GLib from 'gi://GLib';
@@ -123,7 +124,6 @@ function CalandarDates({
   const firstDay = referenceDate;
   const lastDay = referenceDate.add_months(1)!.add_days(-1)!;
   const daysInMonth = lastDay.get_day_of_month();
-  const today = GLib.DateTime.new_now_local();
 
   const dates = _.range(daysInMonth).map(day => ({
     day: referenceDate.add_days(day)!,
@@ -180,7 +180,7 @@ function CalandarDates({
           {dates.map(({ day, isInMonth }) => (
             <label
               className={`calandar-date ${isInMonth ? '' : 'disabled'} ${
-                today.equal(day) ? 'today' : ''
+                isToday(day) ? 'today' : ''
               }`}
               label={`${day.get_day_of_month()}`}
               widthRequest={cellSize + 2}
