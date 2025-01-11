@@ -23,7 +23,7 @@
 ## Utils
 1. Hyprshot - Screenshot tool
 2. pywal - Generate colors from wallpaper
-3. sddm-sugar-dark - SDDM theme
+3. sddm-eucalyptus-drop - SDDM theme
 4. brightness-ctl - Brightness control
 5. mpv - Media player
 6. feh - Image viewer
