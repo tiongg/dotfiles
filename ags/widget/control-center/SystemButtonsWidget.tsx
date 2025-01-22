@@ -1,5 +1,6 @@
 import IconText from '@/components/IconText';
 import cn from '@/utils/cn';
+import { bash } from '@/utils/utils';
 import { bind } from 'astal';
 import Bluetooth from 'gi://AstalBluetooth';
 import Network from 'gi://AstalNetwork';
@@ -8,8 +9,6 @@ import Wp from 'gi://AstalWp';
 import { getMicIcon, getMicLabel } from '../bar/MicDisplay';
 import { getNetworkIcon, getNetworkLabel } from '../bar/NetworkDisplay';
 
-// Uncomment when ready
-// Clashes with agsv1
 const notifications = Notifd.get_default();
 const audio = Wp.get_default()!;
 const mic = audio.get_default_microphone()!;
@@ -60,6 +59,14 @@ function DoNotDistrub() {
       className="cell size-two-one"
       onClick={() => {
         notifications.dontDisturb = !notifications.dontDisturb;
+        const connectBluetooth = notifications.dontDisturb
+          ? 'connect'
+          : 'disconnect';
+        const phoneMac = bluetooth
+          .get_devices()
+          .find(dev => dev.alias.includes('phone'))?.address;
+        if (!phoneMac) return;
+        bash(`bluetoothctl ${connectBluetooth} ${phoneMac}`);
       }}
     >
       <IconText
