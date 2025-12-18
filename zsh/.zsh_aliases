@@ -33,3 +33,8 @@ alias grbdia="git rebase -i --autosquash origin/dev"
 alias gl="git log --oneline --decorate --graph"
 alias glog="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --"
 alias glga="git log --graph --oneline --all --decorate"
+
+# -----------------------------
+# Random aliases
+# -----------------------------
+alias ff="fastfetch"

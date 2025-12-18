@@ -28,6 +28,7 @@ App.start({
   icons: './icons',
 });
 
+// TODO: This doesn't work
 App.requestHandler = (request, response) => {
   switch (request) {
     case 'toggle-bar': {

@@ -29,7 +29,7 @@ function NetworkWidget() {
           return classes.join(' ');
         })}
         icon={getNetworkIcon()}
-        label={getNetworkLabel() ?? 'Unknown'}
+        label={getNetworkLabel()}
         spacing={8}
       />
     </button>

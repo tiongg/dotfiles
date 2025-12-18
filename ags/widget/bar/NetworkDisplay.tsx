@@ -1,3 +1,4 @@
+import { iconOrFallback } from '@/utils/utils';
 import { bind } from 'astal';
 import Network from 'gi://AstalNetwork';
 
@@ -20,22 +21,27 @@ function getWiredLabel(wired: Network.Wired) {
   return 'Wired';
 }
 
-// TODO: Make this bindable
 export function getNetworkLabel() {
-  const type = network.primary ?? Network.Primary.WIFI;
-  switch (type) {
-    case Network.Primary.WIFI:
-      return getWifiLabel(network.get_wifi()!);
-    case Network.Primary.WIRED:
-      return getWiredLabel(network.get_wired()!);
-  }
+  // return bind(network, 'primary').as(primary => {
+  //   switch (primary) {
+  //     case Network.Primary.WIFI:
+  //       return getWifiLabel(network.get_wifi()!);
+  //     case Network.Primary.WIRED:
+  //       return getWiredLabel(network.get_wired()!);
+  //   }
+  //   return 'Unknown';
+  // });
+  return bind(network, 'wifi').as(wifi => {
+    if (wifi) {
+      return getWifiLabel(wifi);
+    }
+    return 'Unknown';
+  });
 }
 
 export function getNetworkIcon() {
-  return bind(network, 'primary').as(primary => {
-    const icon =
-      network[primary === Network.Primary.WIFI ? 'wifi' : 'wired']?.icon_name;
-    return icon || '';
+  return bind(network, 'wifi').as(wifi => {
+    return iconOrFallback(wifi?.iconName);
   });
 }
 
@@ -44,7 +50,7 @@ export function NetworkIcon() {
 }
 
 export function NetworkLabel() {
-  return <label label={bind(network, 'primary').as(getNetworkLabel)} />;
+  return <label label={getNetworkLabel()} />;
 }
 
 /**

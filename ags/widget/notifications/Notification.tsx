@@ -1,4 +1,5 @@
 import { clock } from '@/constants/variables';
+import { getRelativeTime, iconOrFallback } from '@/utils/utils';
 import { bind, Variable } from 'astal';
 import Notifd from 'gi://AstalNotifd';
 import Gtk from 'gi://Gtk?version=3.0';
@@ -46,7 +47,12 @@ function NotificationIcon({ notification }: NotificationAsProp) {
       className="notification-icon"
       valign={Gtk.Align.FILL}
     >
-      <icon icon={notification.get_app_icon()} />
+      <icon
+        icon={iconOrFallback(
+          notification.get_app_icon(),
+          'help-about-symbolic'
+        )}
+      />
     </box>
   );
 }
@@ -55,11 +61,11 @@ function NotificationHeader({
   notification,
   isHovered,
 }: NotificationHeaderProps) {
-  const { summary } = notification;
+  const { summary, time } = notification;
 
   // Shows time, or close button if hovered
   const label = Variable.derive([isHovered, clock], (hovered, _now) =>
-    hovered ? 'Close' : 'Now'
+    hovered ? 'Close' : getRelativeTime(new Date(time * 1000))
   );
 
   const Title = () => (

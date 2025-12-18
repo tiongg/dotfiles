@@ -29,3 +29,10 @@ export FLYCTL_INSTALL="/home/tiong/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
 . "/home/tiong/.deno/env"
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /home/tiong/.dart-cli-completion/zsh-config.zsh ]] && . /home/tiong/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
+# Java autocomplete for some reason
+complete -o default java

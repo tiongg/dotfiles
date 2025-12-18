@@ -53,8 +53,8 @@ function Notifications() {
 
   notifd.connect('resolved', (_, notificationId) => {
     const notifications = notifs.get();
-
     if (!notifications[notificationId]) return;
+
     // We have to call widget.destroy(), else it complains
     notifications[notificationId].destroy();
     delete notifications[notificationId];
